@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://192.168.1.98:8080/ConsumerProject/ConsumerWebServiceService?WSDL" uri="xml-resources/web-service-references/ConsumerWebServiceService/wsdl/192.168.1.98_8080/ConsumerProject/ConsumerWebServiceService.wsdl"/>
+    <system systemId="http://192.168.1.98:8080/ConsumerProject/ConsumerWebServiceService?xsd=1" uri="xml-resources/web-service-references/ConsumerWebServiceService/wsdl/192.168.1.98_8080/ConsumerProject/ConsumerWebServiceService.xsd_1.xsd"/>
+    <system systemId="http://192.168.1.95:8080/ProviderProject/ProviderWSService?wsdl" uri="xml-resources/web-service-references/ProviderWSService/wsdl/192.168.1.95_8080/ProviderProject/ProviderWSService.wsdl"/>
+    <system systemId="http://192.168.1.95:8080/ProviderProject/ProviderWSService?xsd=1" uri="xml-resources/web-service-references/ProviderWSService/wsdl/192.168.1.95_8080/ProviderProject/ProviderWSService.xsd_1.xsd"/>
+    <system systemId="http://192.168.1.3:8080/ConsumerProject/ConsumerWebServiceService?WSDL" uri="xml-resources/web-service-references/ConsumerWebServiceService_1/wsdl/192.168.1.3_8080/ConsumerProject/ConsumerWebServiceService.wsdl"/>
+    <system systemId="http://192.168.1.3:8080/ConsumerProject/ConsumerWebServiceService?xsd=1" uri="xml-resources/web-service-references/ConsumerWebServiceService_1/wsdl/192.168.1.3_8080/ConsumerProject/ConsumerWebServiceService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl" uri="xml-resources/web-service-references/ConsumerWebServiceService_2/wsdl/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl"/>
+    <system systemId="http://localhost:8080/ConsumerProject/ConsumerWebServiceService?xsd=1" uri="xml-resources/web-service-references/ConsumerWebServiceService_2/wsdl/localhost_8080/ConsumerProject/ConsumerWebServiceService.xsd_1.xsd"/>
+    <system systemId="http://192.168.1.11:8080/ProviderProject/ProviderWSService?wsdl" uri="xml-resources/web-service-references/ProviderWSService/wsdl/192.168.1.11_8080/ProviderProject/ProviderWSService.wsdl"/>
+    <system systemId="http://192.168.1.11:8080/ProviderProject/ProviderWSService?xsd=1" uri="xml-resources/web-service-references/ProviderWSService/wsdl/192.168.1.11_8080/ProviderProject/ProviderWSService.xsd_1.xsd"/>
+    <system systemId="http://192.168.1.12:8080/ConsumerProject/ConsumerWebServiceService?wsdl" uri="xml-resources/web-service-references/ConsumerWebServiceService/wsdl/192.168.1.12_8080/ConsumerProject/ConsumerWebServiceService.wsdl"/>
+    <system systemId="http://192.168.1.12:8080/ConsumerProject/ConsumerWebServiceService?xsd=1" uri="xml-resources/web-service-references/ConsumerWebServiceService/wsdl/192.168.1.12_8080/ConsumerProject/ConsumerWebServiceService.xsd_1.xsd"/>
+</catalog>
+
+
+
+
+
+
+
+
