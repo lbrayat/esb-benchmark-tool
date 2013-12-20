@@ -12,82 +12,18 @@ import java.util.*;
 
 /**
  *
- * @author root
+ * @author Théo Mérou
  */
 @WebService()
 public class ProviderWS {
 
 
-    private class Phase{
-
-        private int phaseNumber;
-        private GregorianCalendar dateFin;
-        private long tempsTraitement;
-        private long tailleReponse;
-        private int packetLoss;
-
-
-        public Phase(int phaseNumber, GregorianCalendar dateFin, long tempsTraitement, long tailleReponse, int packetLoss){
-            setDateFin(dateFin);
-            setTempsTraitement(tempsTraitement);
-            setTailleReponse(tailleReponse);
-            setPacketLoss(packetLoss);
-        }
-
-        /**
-         * SETTERS
-         */
-
-        public void setPhaseNumber(int id){
-            phaseNumber = id;
-        }
-
-        public void setDateFin(GregorianCalendar date){
-            dateFin = date;
-        }
-
-        public void setTempsTraitement(long temps){
-            tempsTraitement = temps;
-        }
-
-        public void setTailleReponse(long taille){
-            tailleReponse = taille;
-        }
-
-        public void setPacketLoss(int loss){
-            packetLoss = loss;
-        }
-
-
-
-        /**
-         * GETTERS
-         */
-        public int getPhaseNumber(){
-            return phaseNumber;
-        }
-
-        public Calendar getDateFin(){
-            return dateFin;
-        }
-
-        public long getTempsTraitement(){
-            return tempsTraitement;
-        }
-
-        public long getTailleReponse(){
-            return tailleReponse;
-        }
-
-        public int setPacketLoss(){
-            return packetLoss;
-        }
-
-    }
-
+  
     private List<Phase> phaseList;
     private int readyToStart; //le WS est configuré et prết à démarrer
     private GregorianCalendar dateStart;
+    // index de la liste de phase
+    int index = 0;
 
 
     public ProviderWS(){
@@ -159,11 +95,16 @@ public class ProviderWS {
     public String operation(int idConsumer, int idMEssage, String payloadConsumer){
 
         System.out.println("Réception d'un message");
-        int index = 0;
 
         String payloadProvider = new String();
         if(readyToStart == 1){
+            
             GregorianCalendar date = new GregorianCalendar();
+
+            // on regarde dans quelle phase on est
+            if (date.getTime().after(this.phaseList.get(index).getDateFin().getTime())){
+                index ++;
+            }
 
             //tant que la date de fin n'est pas atteinte
             System.out.println("date de fin : "+this.phaseList.get(index).getDateFin().getTime());
@@ -175,10 +116,7 @@ public class ProviderWS {
             }
 
             System.out.println("Message écrit : "+payloadProvider);
-           
-            if (date.getTime().after(this.phaseList.get(index).getDateFin().getTime())){
-                index ++;
-            }
+          
         }
         
         System.out.println("Envoi d'un message");
