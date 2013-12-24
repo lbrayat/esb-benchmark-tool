@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "ConsumerWebServiceService", targetNamespace = "http://beta/", wsdlLocation = "http://localhost:8080/ConsumerProject/ConsumerWebServiceService?WSDL")
+@WebServiceClient(name = "ConsumerWebServiceService", targetNamespace = "http://beta/", wsdlLocation = "http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl")
 public class ConsumerWebServiceService
     extends Service
 {
@@ -30,9 +30,9 @@ public class ConsumerWebServiceService
         try {
             URL baseUrl;
             baseUrl = beta.ConsumerWebServiceService.class.getResource(".");
-            url = new URL(baseUrl, "http://localhost:8080/ConsumerProject/ConsumerWebServiceService?WSDL");
+            url = new URL(baseUrl, "http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/ConsumerProject/ConsumerWebServiceService?WSDL', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         CONSUMERWEBSERVICESERVICE_WSDL_LOCATION = url;

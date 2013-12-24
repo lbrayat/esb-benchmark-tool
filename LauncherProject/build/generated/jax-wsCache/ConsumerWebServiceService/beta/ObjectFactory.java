@@ -42,11 +42,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Ping }
+     * Create an instance of {@link ConfigurePhaseResponse }
      * 
      */
-    public Ping createPing() {
-        return new Ping();
+    public ConfigurePhaseResponse createConfigurePhaseResponse() {
+        return new ConfigurePhaseResponse();
     }
 
     /**
@@ -58,27 +58,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StartScenario }
+     * Create an instance of {@link StartConfigurationResponse }
      * 
      */
-    public StartScenario createStartScenario() {
-        return new StartScenario();
+    public StartConfigurationResponse createStartConfigurationResponse() {
+        return new StartConfigurationResponse();
     }
 
     /**
-     * Create an instance of {@link PingResponse }
+     * Create an instance of {@link Ping }
      * 
      */
-    public PingResponse createPingResponse() {
-        return new PingResponse();
-    }
-
-    /**
-     * Create an instance of {@link ConfigurePhaseResponse }
-     * 
-     */
-    public ConfigurePhaseResponse createConfigurePhaseResponse() {
-        return new ConfigurePhaseResponse();
+    public Ping createPing() {
+        return new Ping();
     }
 
     /**
@@ -90,19 +82,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StartConfigurationResponse }
+     * Create an instance of {@link PingResponse }
      * 
      */
-    public StartConfigurationResponse createStartConfigurationResponse() {
-        return new StartConfigurationResponse();
-    }
-
-    /**
-     * Create an instance of {@link EndConfiguration }
-     * 
-     */
-    public EndConfiguration createEndConfiguration() {
-        return new EndConfiguration();
+    public PingResponse createPingResponse() {
+        return new PingResponse();
     }
 
     /**
@@ -111,6 +95,22 @@ public class ObjectFactory {
      */
     public ConfigurePhase createConfigurePhase() {
         return new ConfigurePhase();
+    }
+
+    /**
+     * Create an instance of {@link StartScenario }
+     * 
+     */
+    public StartScenario createStartScenario() {
+        return new StartScenario();
+    }
+
+    /**
+     * Create an instance of {@link EndConfiguration }
+     * 
+     */
+    public EndConfiguration createEndConfiguration() {
+        return new EndConfiguration();
     }
 
     /**
