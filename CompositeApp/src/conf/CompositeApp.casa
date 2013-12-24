@@ -50,16 +50,42 @@ made subject to such option by the copyright holder.
 <casa xmlns="http://java.sun.com/xml/ns/casa" 
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
       version="1.0" 
-      xsi:schemaLocation="http://java.sun.com/xml/ns/casa ./casa.xsd">
-    <endpoints/>
-    <service-units/>
-    <connections/>
-    <porttypes/>
+      xsi:schemaLocation="http://java.sun.com/xml/ns/casa ./casa.xsd" xmlns:ns="http://beta/" xmlns:xlink="http://www.w3.org/2000/xlink" xmlns:ns0="CompositeApp" xmlns:ns1="http://providerPckg/">
+    <endpoints>
+        <endpoint name="endpoint1" endpoint-name="ConsumerWebServicePort" interface-name="ns:ConsumerWebService" service-name="ns:ConsumerWebServiceService"/>
+        <endpoint name="endpoint2" endpoint-name="consumerPort" interface-name="ns:ConsumerWebService" service-name="ns0:CompositeAppService1"/>
+    </endpoints>
+    <service-units>
+        <binding-component-service-unit unit-name="sun-http-binding" component-name="sun-http-binding" name="sun-http-binding" description="Represents this Service Unit" artifacts-zip="sun-http-binding.jar">
+            <ports>
+                <port x="67" y="118" bindingType="soap">
+                    <link xmlns:xlink="http://www.w3.org/2000/xlink" xlink:href="../jbiasa/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/service[@name=&apos;ConsumerWebServiceService&apos;]/port[@name=&apos;ConsumerWebServicePort&apos;])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint1"/>
+                    <provides endpoint="endpoint1"/>
+                </port>
+                <port x="67" y="197" bindingType="soap">
+                    <link xlink:href="../jbiasa/CompositeApp.wsdl#xpointer(/definitions/service[@name=&apos;CompositeAppService1&apos;]/port[@name=&apos;consumerPort&apos;])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint2"/>
+                    <provides endpoint="endpoint2"/>
+                </port>
+            </ports>
+        </binding-component-service-unit>
+    </service-units>
+    <connections>
+        <connection state="new" consumer="endpoint2" provider="endpoint1"/>
+    </connections>
+    <porttypes>
+        <link xlink:href="../jbiasa/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/portType[@name=&apos;ConsumerWebService&apos;])" xlink:type="simple"/>
+        <link xlink:href="../jbiasa/CompositeApp.wsdl#xpointer(/definitions/portType[@name=&apos;dummyCasaPortType&apos;])" xlink:type="simple"/>
+        <link xlink:href="../jbiasa/localhost_8080/ProviderProjectWithConf/ProviderWSService.wsdl#xpointer(/definitions/portType[@name=&apos;ProviderWS&apos;])" xlink:type="simple"/>
+    </porttypes>
     <bindings/>
     <services/>
     <regions>
         <region name="WSDL Endpoints" width="150"/>
         <region name="JBI Modules" width="500"/>
         <region name="External Modules" width="200"/>
-    </regions>        
+    </regions>
 </casa>
+
+
