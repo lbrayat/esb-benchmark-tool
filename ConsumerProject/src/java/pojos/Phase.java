@@ -20,14 +20,19 @@ public class Phase {
     int payloadSize;
     int repetitions;
     Calendar startDate;
+    int targetConfig;
 
-    public Phase(String recepientAddress, int numberOfRequests, int sendingPeriod, int payloadSize, int repetitions, Calendar startDate) {
+
+
+    public Phase(String recepientAddress, int numberOfRequests, int sendingPeriod, 
+            int payloadSize, int repetitions, Calendar startDate, int targetedProviderConfiguration) {
         this.recepientAddress = recepientAddress;
         this.numberOfRequests = numberOfRequests;
         this.sendingPeriod = sendingPeriod;
         this.payloadSize = payloadSize;
         this.repetitions = repetitions;
         this.startDate = startDate;
+        this.targetConfig = targetedProviderConfiguration;
     }
 
     public int getNumberOfRequests() {
@@ -36,6 +41,14 @@ public class Phase {
 
     public int getPayloadSize() {
         return payloadSize;
+    }
+
+    public int getTargetConfig() {
+        return targetConfig;
+    }
+
+    public void setTargetConfig(int targetConfig) {
+        this.targetConfig = targetConfig;
     }
 
     public String getRecepientAddress() {

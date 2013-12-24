@@ -26,21 +26,21 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-ProviderWSService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/ProviderWSService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ProviderWSService" destdir="${build.generated.dir}/jax-wsCache/ProviderWSService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ProviderWSService/wsdl/192.168.1.95_8080/ProviderProject/ProviderWSService.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://192.168.1.95:8080/ProviderProject/ProviderWSService?WSDL" xnocompile="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ProviderWSService/wsdl/192.168.1.95_8080/ProviderProject/ProviderWSService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/ProviderWSService"/>
+    <target name="wsimport-client-ProviderWSService_1" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ProviderWSService_1"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ProviderWSService_1" destdir="${build.generated.dir}/jax-wsCache/ProviderWSService_1" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ProviderWSService_1/wsdl/localhost_8080/ProviderProjectWithConf/ProviderWSService.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/ProviderProjectWithConf/ProviderWSService?wsdl" xnocompile="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ProviderWSService_1/wsdl/localhost_8080/ProviderProjectWithConf/ProviderWSService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ProviderWSService_1"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/ProviderWSService">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ProviderWSService_1">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-ProviderWSService" depends="-init-project">
+    <target name="wsimport-client-clean-ProviderWSService_1" depends="-init-project">
         <delete dir="${build.generated.sources.dir}/jax-ws/providerpckg"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/ProviderWSService"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ProviderWSService_1"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-ProviderWSService"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-ProviderWSService_1"/>
 </project>

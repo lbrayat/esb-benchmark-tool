@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -20,8 +21,8 @@ import javax.xml.ws.WebServiceRef;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import pojos.Phase;
+import multithreading.PhaseLauncher;
 import providerpckg.ProviderWSService;
-
 /**
  *
  * @author marc
@@ -30,11 +31,12 @@ import providerpckg.ProviderWSService;
 public class ConsumerWebService {
 
     public static final int CONSUMER_ID = 1;
-    private static final String PAYLOAD = "ta soeur";
-    private int messageNumber;
+    public static AtomicInteger messageNumber;
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/192.168.1.95_8080/ProviderProject/ProviderWSService.wsdl")
-    private ProviderWSService service;// = new ProviderWSService(getURL(), getQName());
+    private ArrayList<Thread> threadsList;
+
+    @WebServiceRef(wsdlLocation = "http://localhost:8080/ProviderProject/ProviderWSService?wsdl")
+    private ProviderWSService service;
 
 
      //logging in different levels
@@ -48,7 +50,7 @@ public class ConsumerWebService {
 
     private List<Phase> phasesList;
     private Phase currentPhase;
-    static Logger log = Logger.getLogger(ConsumerWebService.class.getName());
+    public static Logger log = Logger.getLogger(ConsumerWebService.class.getName());
 
     public ConsumerWebService() {
         log.setLevel(Level.DEBUG);
@@ -59,11 +61,13 @@ public class ConsumerWebService {
    //     startDate.add(Calendar.SECOND, 35);
      //   Phase testPhase = new Phase("http://192.168.1.95:8080/ProviderProject/ProviderWSService?wsdl", 5, 3, 10, 3, startDate);
        // phasesList.add(testPhase);
-        
-        log.trace("The consumer is deployed");
-    } 
 
+        log.debug("The consumer is deployed");
+        threadsList = new ArrayList<Thread>();
+        messageNumber = new AtomicInteger(0);
+    }
 
+ 
     /**
      * Web service operation
      */
@@ -72,7 +76,7 @@ public class ConsumerWebService {
         log.debug("Someone pinged this WS");
         return 1;
     }
-
+ 
     /**
      * Web service operation
      */
@@ -81,6 +85,8 @@ public class ConsumerWebService {
         log.debug("Asked for a new configuration, erasing previous configurations");
         //we start a new configuration by voiding previous list
         phasesList=new ArrayList<Phase>();
+        threadsList = new ArrayList<Thread>();
+        messageNumber= new AtomicInteger(0);
         log.debug("Previous configurations deleted");
     }
 
@@ -91,6 +97,7 @@ public class ConsumerWebService {
     public void configurePhase(@WebParam(name = "recepientAddress")
     String recepientAddress,@WebParam(name = "phaseNumber")
     int phaseNumber, @WebParam(name = "NumberOfrequests")
+    int targetedProviderConfiguration, @WebParam(name = "targetedProviderConfiguration")
     int NumberOfrequests, @WebParam(name = "sendingPeriod")
     int sendingPeriod, @WebParam(name = "payloadSize")
     int payloadSize, @WebParam(name = "repetitions")
@@ -101,9 +108,9 @@ public class ConsumerWebService {
         Calendar startDateInCal = new GregorianCalendar();
         log.debug("timestamp long : "+startDate);
         startDateInCal.setTimeInMillis(startDate);
- 
+
         Phase newPhase = new Phase(recepientAddress, NumberOfrequests,
-                sendingPeriod, payloadSize, repetitions, startDateInCal);
+                sendingPeriod, payloadSize, repetitions, startDateInCal, targetedProviderConfiguration);
 
         phasesList.add(newPhase);
         log.debug(newPhase.toString());
@@ -126,82 +133,16 @@ public class ConsumerWebService {
             log.error("The phases list is empty !! You must configure a scenario before starting it");
         }
         else {
-            Phase earlierPhase = phasesList.get(0);
+            
             for (Phase p : phasesList){
-                if(p.getStartDate().before(earlierPhase)){
-                    earlierPhase=p;
-                }
+                Thread t = new Thread(new PhaseLauncher(p));
+                threadsList.add(t);
+                t.start();
             }
 
-            currentPhase = earlierPhase;
-            log.error("The current Phase is "+currentPhase);
 
-            // wait for the start date
-            log.debug("Waiting for the beginning of the scenario at time "+currentPhase.getStartDate().toString());
-            while(new GregorianCalendar().before(currentPhase.getStartDate())){
-                try {
-                    Thread.sleep(500); 
-                    log.debug("woke up");
-                } catch (InterruptedException ex) {
-                    log.fatal(ex);
-                }
-            }
-
-            for (int i=0; i<phasesList.size(); i++){
-
-                launchPhase(currentPhase);
-
-                if (i!=phasesList.size()-1){
-                    currentPhase = getNextPhase();
-                }
-            }
         }
-       
-    }
 
-    private void launchPhase(Phase thaPhase){
-        log.debug("Phase " + thaPhase + " is launched");
-        // launch the phase
-            for (int i =0; i<thaPhase.getRepetitions(); i++){
-                for (int j =0; j<thaPhase.getNumberOfRequests(); j++){
-                    // send messages
-                    sendRequest();
-                }
-            try {
-                // wait for next burst
-                log.debug("Waiting for the next burst");
-                Thread.sleep(thaPhase.getSendingPeriod() * 1000);
-            } catch (InterruptedException ex) {
-                java.util.logging.Logger.getLogger(ConsumerWebService.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            }
-
-            }
-
-    }
-
-    /**
-     * This function is used to get the next phase after the one set as the current one
-     * @return Phase 
-     */
-    private Phase getNextPhase(){
-        if (phasesList.isEmpty()){
-            log.error("The phases list is empty !! You must configure a scenario before starting it");
-            return null;
-        }
-        else {
-            Phase nextPhase = phasesList.get(0);
-            for (Phase p : phasesList){
-                if(p.getStartDate().before(nextPhase) && 
-                        p.getStartDate().after(new GregorianCalendar()))
-                {
-                    nextPhase=p;
-                    log.debug("Current phase is "+ this.currentPhase);
-                    log.debug("Next phase is " + nextPhase);
-                }
-            }
-
-            return nextPhase;
-        }
     }
 
     private URL getURL() {
@@ -223,28 +164,5 @@ public class ConsumerWebService {
         return new QName("http://providerPckg/", "ProviderWSService");
     }
 
-    private void sendRequest(){
-        //TODO implement sendRequest()
 
-        try { // Call Web Service Operation
-            service = new ProviderWSService(getURL(), getQName());
-            providerpckg.ProviderWS port = service.getProviderWSPort();
-            // TODO initialize WS operation arguments here
-            int consumerId = ConsumerWebService.CONSUMER_ID;
-            int messageId = this.messageNumber;
-            this.messageNumber++;
-            String payload = ConsumerWebService.PAYLOAD;
-            // TODO process result here
-            log.debug("Request message id "+messageId+" about to be sent");
-            String result = port.operation(consumerId, messageId, payload);
-            if (result==null){
-                log.fatal("The remote service experienced a problem, aborting");
-            }else{
-                log.debug("Provider answered with "+result);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
 }

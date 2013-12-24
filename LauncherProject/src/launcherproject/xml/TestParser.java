@@ -1,10 +1,5 @@
 package launcherproject.xml;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author admin
@@ -17,12 +12,12 @@ public class TestParser {
         {
             System.out.println("Programme de test du parseur XML");
             ScenarioXML scenario = new ScenarioXML ();
-            String fileName = "C:/Documents and Settings/lbrayat/Mes documents/Downloads/ParsingXML/ParsingXML/scenario.xml";
+            String fileName = "/home/marc/Downloads/scenario.xml";
             setParser(new Parser(fileName));
             getParser().doParse();
-            scenario.setConfigurationXML(Parser.getConfigurationXML());
-            scenario.setConsumersXML(Parser.getConsumersXML());
-            scenario.setProvidersXML(Parser.getProvidersXML());
+            scenario.setConfigurationXML(parser.getConfigurationXML());
+            scenario.setConsumersXML(parser.getConsumersXML());
+            scenario.setProvidersXML(parser.getProvidersXML());
             System.out.println(scenario);
 	}
 

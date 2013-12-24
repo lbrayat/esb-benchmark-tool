@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
+import launcherproject.xml.PhaseProvider;
 
 /**
  *
@@ -21,24 +22,6 @@ public class ProviderClient extends ESBWSClient {
 
     private static final Logger logger = Logger.getLogger("Launcher");
     
-    private class ProviderPhase {
-
-        public int mIdPhase;
-        public int mTreatmentTime;
-        public long mResponseSize;
-        public int mLostPercent;
-        public long mEndTimeStamp;
-
-        public ProviderPhase(int mIdPhase, int mTreatmentTime, long mResponseSize, int mLostPercent, long mEndTimeStamp) {
-            this.mIdPhase = mIdPhase;
-            this.mTreatmentTime = mTreatmentTime;
-            this.mResponseSize = mResponseSize;
-            this.mLostPercent = mLostPercent;
-            this.mEndTimeStamp = mEndTimeStamp;
-        }
-
-    }
-
     private static QName mQName = new QName("http://providerPckg/", "ProviderWSService");
 
     private QName getQName() {
@@ -60,12 +43,12 @@ public class ProviderClient extends ESBWSClient {
     }
 
     private int mIdConsumerWS;
-    private List<ProviderPhase> mPhaseList;
+    private List<PhaseProvider> mPhaseList;
 
     public ProviderClient(int id, String wsdl) {
         mIdConsumerWS = id;
         mWSDL = wsdl;
-        mPhaseList = new ArrayList<ProviderPhase>();
+        mPhaseList = new ArrayList<PhaseProvider>();
     }
 
     protected int callEndConf() {
@@ -112,7 +95,7 @@ public class ProviderClient extends ESBWSClient {
         return 0;
     }
 
-    private void callAddPhase(ProviderPhase aPhase) {
+    private void callAddPhase(PhaseProvider aPhase) {
 
         logger.log(Level.INFO, "callAddPhase : begin");
 
@@ -121,13 +104,17 @@ public class ProviderClient extends ESBWSClient {
             providerpckg.ProviderWSService service = new providerpckg.ProviderWSService();
             providerpckg.ProviderWS port = service.getProviderWSPort();
             // TODO initialize WS operation arguments here
-            int phaseNumber = aPhase.mIdPhase;
-            long dateFin = aPhase.mEndTimeStamp;
-            long tempsTraitement = aPhase.mTreatmentTime;
-            long tailleReponse = aPhase.mResponseSize;
-            int packetLoss = aPhase.mLostPercent;
+            int phaseNumber = aPhase.getConfId();
+            long tempsTraitement = aPhase.getProcessingTime();
+            long tailleReponse = aPhase.getPacketSize();
+            int packetLoss = aPhase.getPercentageLoss();
+            logger.log(Level.INFO, "callAddPhase parameters :" +
+                    "\n   phaseNumber:"+phaseNumber+
+                    "\n   tempsTraitement:"+tempsTraitement+
+                    "\n   tailleReponse:"+tailleReponse+
+                    "\n   packetLoss:"+packetLoss);
             // TODO process result here
-            int result = port.addPhase(phaseNumber, dateFin, tempsTraitement, tailleReponse, packetLoss);
+            int result = port.addConf(phaseNumber, tempsTraitement, tailleReponse, packetLoss);
             System.out.println("Result = "+result);
         } catch (Exception ex) {
             // TODO handle custom exceptions here
@@ -144,24 +131,23 @@ public class ProviderClient extends ESBWSClient {
         public void addPhase(
             int mIdPhase,
             int mTreatmentTime,
-            long mResponseSize,
-            int mLostPercent,
-            long mEndTimeStamp) {
+            int mResponseSize,
+            int mLostPercent) {
 
         mPhaseList.add(
-                new ProviderPhase(
+                new PhaseProvider(
                     mIdPhase,
                     mTreatmentTime,
                     mResponseSize,
-                    mLostPercent,
-                    mEndTimeStamp));
+                    mLostPercent
+                    ));
     }
         
     public boolean configure() {
 
         callStartConf();
 
-        for(ProviderPhase iPhase : mPhaseList) {
+        for(PhaseProvider iPhase : mPhaseList) {
             callAddPhase(iPhase);
         }
 

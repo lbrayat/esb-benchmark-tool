@@ -1,5 +1,5 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this template, choose Tools | Templates 
  * and open the template in the editor.
  */
 
@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
+import launcherproject.xml.PhaseConsumer;
 
 /**
  *
@@ -36,31 +37,9 @@ public class ConsumerClient extends ESBWSClient {
         return url;
     }
         
-    private class ConsumerPhase {
-
-        public String mIdProviderWS;
-        public int mTrafficProfile;
-        public int mNbRequests;
-        public int mPeriod;
-        public int mSize;
-        public long mStartTimeStamp;
-        public int mNbRepeat;
-        public int mIdPhase;
-
-        public ConsumerPhase(String mIdProviderWS, int mTrafficProfile, int mNbRequests, int mPeriod, int mSize, long mStartTimeStamp, int mNbRepeat) {
-            this.mIdProviderWS = mIdProviderWS;
-            this.mTrafficProfile = mTrafficProfile;
-            this.mNbRequests = mNbRequests;
-            this.mPeriod = mPeriod;
-            this.mSize = mSize;
-            this.mStartTimeStamp = mStartTimeStamp;
-            this.mNbRepeat = mNbRepeat;
-        }
-        
-    }
 
     private int mIdConsumerWS;
-    private List<ConsumerPhase> mPhaseList;
+    private List<PhaseConsumer> mPhaseList;
 
     private static QName mQName = new QName("http://beta/", "ConsumerWebServiceService");
 
@@ -71,12 +50,14 @@ public class ConsumerClient extends ESBWSClient {
     public ConsumerClient(int id, String wsdl) {
         mIdConsumerWS = id;
         mWSDL = wsdl;
-        mPhaseList = new ArrayList<ConsumerPhase>();
+        mPhaseList = new ArrayList<PhaseConsumer>();
     }
 
     public void addPhase(
         String mIdProviderWS,
+        int mId,
         int mTrafficProfile,
+        int mTargetedProviderConf,
         int mNbRequests,
         int mPeriod,
         int mSize,
@@ -84,36 +65,39 @@ public class ConsumerClient extends ESBWSClient {
         int mNbRepeat) {
 
         mPhaseList.add(
-                new ConsumerPhase(
+                new PhaseConsumer(
                     mIdProviderWS,
                     mTrafficProfile,
                     mNbRequests,
                     mPeriod,
                     mSize,
                     mStartTimeStamp,
-                    mNbRepeat));
+                    mNbRepeat,
+                    mTargetedProviderConf,
+                    mId));
     }
 
-    private void callAddPhase(ConsumerPhase aPhase) {
+    private void callAddPhase(PhaseConsumer aPhase) {
 
         logger.log(Level.INFO, "callAddPhase : begin");
 
         try { // Call Web Service Operation
             beta.ConsumerWebServiceService service = new beta.ConsumerWebServiceService(getURL(), getQName());
             beta.ConsumerWebService port = service.getConsumerWebServicePort();
-System.err.println(aPhase.mIdProviderWS);
+            System.err.println(aPhase.getProviderId());
 
             Date date = new Date();
             long time = date.getTime();
-            time = time + 1000 * aPhase.mStartTimeStamp;
+            time = time + 1000 * aPhase.getStartDate();
 
             port.configurePhase(
-                    aPhase.mIdProviderWS,
-                    aPhase.mIdPhase,
-                    aPhase.mNbRequests,
-                    aPhase.mPeriod,
-                    aPhase.mSize,
-                    aPhase.mNbRepeat,
+                    aPhase.getProviderId(),
+                    aPhase.getId(),
+                    aPhase.getTargetedProviderConf(),
+                    aPhase.getNumberOfRequests(),
+                    aPhase.getSendPeriod(),
+                    aPhase.getPacketSize(),
+                    aPhase.getNumberOfBursts(),
                     time
                     );
         } catch (Exception ex) {
@@ -182,7 +166,7 @@ System.err.println(aPhase.mIdProviderWS);
 
         callStartConf();
 
-        for(ConsumerPhase iPhase : mPhaseList) {
+        for(PhaseConsumer iPhase : mPhaseList) {
             callAddPhase(iPhase);
         }
 

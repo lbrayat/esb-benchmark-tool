@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 public class Main {
 
     private static final Logger logger = Logger.getLogger("Launcher");
+    private static final String FILE_PATH = "c:\\tmp\\scenario.xml";
 
     /**
      * @param args the command line arguments
@@ -24,8 +25,8 @@ public class Main {
 
         logger.log(Level.INFO, "Launcher : start");
 
-        File f = new File("c:/tmp/test/scenario.xml");
-System.err.println(f.exists());
+        File f = new File(FILE_PATH);
+        System.err.println(f.exists());
 
         // Initialize the scenario from XML config file
         Scenario scenario = new Scenario(f.getAbsolutePath());
@@ -42,7 +43,7 @@ System.err.println(f.exists());
             iConsumer.configure();
         }
 
-        // Start all Providers
+       // Start all Providers
         for (ProviderClient iProvider : scenario.getProviderList()) {
             iProvider.callStart();
         }
@@ -51,7 +52,6 @@ System.err.println(f.exists());
         for (ConsumerClient iProvider : scenario.getConsumerList()) {
             iProvider.callStart();
         }
-
         logger.log(Level.INFO, "Launcher : complete");
     }
 

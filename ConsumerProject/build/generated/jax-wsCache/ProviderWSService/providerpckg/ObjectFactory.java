@@ -51,11 +51,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StartConf }
+     * Create an instance of {@link Operation }
      * 
      */
-    public StartConf createStartConf() {
-        return new StartConf();
+    public Operation createOperation() {
+        return new Operation();
+    }
+
+    /**
+     * Create an instance of {@link AddPhaseResponse }
+     * 
+     */
+    public AddPhaseResponse createAddPhaseResponse() {
+        return new AddPhaseResponse();
     }
 
     /**
@@ -64,6 +72,30 @@ public class ObjectFactory {
      */
     public PingResponse createPingResponse() {
         return new PingResponse();
+    }
+
+    /**
+     * Create an instance of {@link EndConfResponse }
+     * 
+     */
+    public EndConfResponse createEndConfResponse() {
+        return new EndConfResponse();
+    }
+
+    /**
+     * Create an instance of {@link StartConf }
+     * 
+     */
+    public StartConf createStartConf() {
+        return new StartConf();
+    }
+
+    /**
+     * Create an instance of {@link OperationResponse }
+     * 
+     */
+    public OperationResponse createOperationResponse() {
+        return new OperationResponse();
     }
 
     /**
@@ -88,38 +120,6 @@ public class ObjectFactory {
      */
     public StartConfResponse createStartConfResponse() {
         return new StartConfResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddPhaseResponse }
-     * 
-     */
-    public AddPhaseResponse createAddPhaseResponse() {
-        return new AddPhaseResponse();
-    }
-
-    /**
-     * Create an instance of {@link Operation }
-     * 
-     */
-    public Operation createOperation() {
-        return new Operation();
-    }
-
-    /**
-     * Create an instance of {@link OperationResponse }
-     * 
-     */
-    public OperationResponse createOperationResponse() {
-        return new OperationResponse();
-    }
-
-    /**
-     * Create an instance of {@link EndConfResponse }
-     * 
-     */
-    public EndConfResponse createEndConfResponse() {
-        return new EndConfResponse();
     }
 
     /**

@@ -7,13 +7,9 @@ package launcherproject;
 
 import java.util.ArrayList;
 import java.util.List;
+import launcherproject.xml.*;
 import launcherproject.xml.Parser;
 import launcherproject.xml.ScenarioXML;
-import launcherproject.xml.ScenarioXML.Actor;
-import launcherproject.xml.ScenarioXML.Consumer;
-import launcherproject.xml.ScenarioXML.PhaseConsumer;
-import launcherproject.xml.ScenarioXML.PhaseProvider;
-import launcherproject.xml.ScenarioXML.Provider;
 
 /**
  * Interface between XML objects and WS Client objects
@@ -56,9 +52,9 @@ public class Scenario {
         System.err.println(fileName);
         Parser parser = new Parser(fileName);
         parser.doParse();
-        scenario.setConfigurationXML(Parser.getConfigurationXML());
-        scenario.setConsumersXML(Parser.getConsumersXML());
-        scenario.setProvidersXML(Parser.getProvidersXML());
+        scenario.setConfigurationXML(parser.getConfigurationXML());
+        scenario.setConsumersXML(parser.getConsumersXML());
+        scenario.setProvidersXML(parser.getProvidersXML());
 
         // Initialize the ConsumerClient list
 
@@ -73,7 +69,9 @@ public class Scenario {
             for (PhaseConsumer phase : consumerXML.getListPhases()) {
                 consumer.addPhase(
                         getActorWSDL(scenario, phase.getProviderId()),
-                        nbPhase, 
+                        nbPhase,
+                        TrafficClass.trafficClassToInt(phase.getTrafficClass()),
+                        phase.getTargetedProviderConf(),
                         phase.getNumberOfRequests(),
                         phase.getSendPeriod(),
                         phase.getPacketSize(),
@@ -88,7 +86,6 @@ public class Scenario {
         }
 
         // Initialize the ProviderClient list
-
         for (Provider providerXML : scenario.getProvidersXML()) {
 
             ProviderClient provider = new ProviderClient(
@@ -102,8 +99,7 @@ public class Scenario {
                             nbPhase,
                             phase.getProcessingTime(),
                             phase.getPacketSize(),
-                            phase.getPercentageLoss(),
-                            phase.getEndDate()
+                            phase.getPercentageLoss()
                         );
 
                 nbPhase++;

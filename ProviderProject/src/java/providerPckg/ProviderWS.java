@@ -9,6 +9,8 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,18 +19,15 @@ import java.util.*;
 @WebService()
 public class ProviderWS {
 
-
-  
-    private List<Phase> phaseList;
+    private HashMap<Integer, Configuration> confList;
     private int readyToStart; //le WS est configuré et prết à démarrer
-    private GregorianCalendar dateStart;
-    // index de la liste de phase
-    int index = 0;
 
+     private static final Logger logger = Logger.getLogger("ProviderWS");
 
     public ProviderWS(){
+        logger.setLevel(Level.ALL);
         readyToStart = 0;
-        phaseList = new ArrayList<Phase>();
+        confList = new HashMap<Integer, Configuration>();
     }
 
     /**
@@ -46,34 +45,32 @@ public class ProviderWS {
      */
     @WebMethod(operationName = "startConf")
     public void startConf(){
-        phaseList.clear();
+        confList.clear();
     }
     
 
     /**
      * Web service operation
      */
-    @WebMethod(operationName = "addPhase")
-    public int addPhase(@WebParam(name = "phaseNumber")
-    int phaseNumber, @WebParam(name = "dateFin")
-    long dateFin, @WebParam(name = "tempsTraitement")
+    @WebMethod(operationName = "addConf")
+    public int addConf(@WebParam(name = "confNumber")
+    int confNumber, @WebParam(name = "tempsTraitement")
     long tempsTraitement, @WebParam(name = "tailleReponse")
     long tailleReponse, @WebParam(name = "packetLoss")
     int packetLoss) {
-
-        GregorianCalendar dateF = new GregorianCalendar();
-        dateF.setTimeInMillis(dateFin);
-        Phase phase = new Phase(phaseNumber, dateF, tempsTraitement, tailleReponse, packetLoss);
-        phaseList.add(phase);
-
         //log
-        System.out.println("phaseNumber : "+phaseNumber);
-        System.out.println("dateF : "+dateF);
-        System.out.println("tempsTraitement : "+tempsTraitement);
-        System.out.println("tailleReponse : "+tailleReponse);
-        System.out.println("packetLoss : "+packetLoss);
+        logger.info("Provider WS received a new conf :");
+        logger.info("phaseNumber : "+confNumber);
+        logger.info("tempsTraitement : "+tempsTraitement);
+        logger.info("tailleReponse : "+tailleReponse);
+        logger.info("packetLoss : "+packetLoss);
 
-        return 0;
+
+        
+        Configuration conf = new Configuration(tempsTraitement, tailleReponse, packetLoss);
+        confList.put(confNumber, conf);
+
+        return 1;
 
     }
 
@@ -83,7 +80,6 @@ public class ProviderWS {
     @WebMethod(operationName = "endConf")
     public int endConf() {
         readyToStart = 1;
-        dateStart = new GregorianCalendar();
         return 0;
     }
 
@@ -92,26 +88,22 @@ public class ProviderWS {
      * TODO : tempsTraitement
      */
     @WebMethod(operationName = "operation")
-    public String operation(int idConsumer, int idMEssage, String payloadConsumer){
+    public String operation(int idConf, String payload) throws InterruptedException{
 
-        System.out.println("Réception d'un message");
+        System.out.println("[ProviderWS] conf id="+idConf);
+        Configuration currentConf = this.confList.get(idConf);
+        System.out.println("[ProviderWS] current conf="+currentConf);
+        System.out.println("[ProviderWS] Réception d'un message");
 
-        String payloadProvider = new String();
+        String payloadProvider = new String(); 
         if(readyToStart == 1){
+
+            int i; 
+
+            Thread.sleep(currentConf.getTempsTraitement());
             
-            GregorianCalendar date = new GregorianCalendar();
-
-            // on regarde dans quelle phase on est
-            if (date.getTime().after(this.phaseList.get(index).getDateFin().getTime())){
-                index ++;
-            }
-
-            //tant que la date de fin n'est pas atteinte
-            System.out.println("date de fin : "+this.phaseList.get(index).getDateFin().getTime());
-
-            int i;
             // construit la chaîne de caractères en fonction de la taille de la réponse
-            for(i=0; i<this.phaseList.get(index).getTailleReponse(); i++){
+            for(i=0; i<currentConf.getTailleReponse(); i++){
                     payloadProvider = payloadProvider.concat("A");
             }
 
@@ -122,6 +114,8 @@ public class ProviderWS {
         System.out.println("Envoi d'un message");
         return payloadProvider;
     }
+
+    
 
 
 }
