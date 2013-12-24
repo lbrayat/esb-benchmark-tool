@@ -46,6 +46,7 @@ public interface ConsumerWebService {
     /**
      * 
      * @param startDate
+     * @param targetedProviderConfiguration
      * @param phaseNumber
      * @param numberOfrequests
      * @param recepientAddress
@@ -63,6 +64,8 @@ public interface ConsumerWebService {
         int phaseNumber,
         @WebParam(name = "NumberOfrequests", targetNamespace = "")
         int numberOfrequests,
+        @WebParam(name = "targetedProviderConfiguration", targetNamespace = "")
+        int targetedProviderConfiguration,
         @WebParam(name = "sendingPeriod", targetNamespace = "")
         int sendingPeriod,
         @WebParam(name = "payloadSize", targetNamespace = "")

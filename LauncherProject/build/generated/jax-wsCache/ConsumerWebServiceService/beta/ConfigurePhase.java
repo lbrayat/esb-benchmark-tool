@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="recepientAddress" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="phaseNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="NumberOfrequests" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="targetedProviderConfiguration" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="sendingPeriod" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="payloadSize" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="repetitions" type="{http://www.w3.org/2001/XMLSchema}int"/>
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
     "recepientAddress",
     "phaseNumber",
     "numberOfrequests",
+    "targetedProviderConfiguration",
     "sendingPeriod",
     "payloadSize",
     "repetitions",
@@ -48,6 +50,7 @@ public class ConfigurePhase {
     protected int phaseNumber;
     @XmlElement(name = "NumberOfrequests")
     protected int numberOfrequests;
+    protected int targetedProviderConfiguration;
     protected int sendingPeriod;
     protected int payloadSize;
     protected int repetitions;
@@ -107,6 +110,22 @@ public class ConfigurePhase {
      */
     public void setNumberOfrequests(int value) {
         this.numberOfrequests = value;
+    }
+
+    /**
+     * Gets the value of the targetedProviderConfiguration property.
+     * 
+     */
+    public int getTargetedProviderConfiguration() {
+        return targetedProviderConfiguration;
+    }
+
+    /**
+     * Sets the value of the targetedProviderConfiguration property.
+     * 
+     */
+    public void setTargetedProviderConfiguration(int value) {
+        this.targetedProviderConfiguration = value;
     }
 
     /**
