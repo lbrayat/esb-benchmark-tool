@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
 import launcherproject.xml.PhaseProvider;
+import providerpckg.ProviderWSService;
 
 /**
  *
@@ -56,7 +57,7 @@ public class ProviderClient extends ESBWSClient {
         logger.log(Level.INFO, "callEndConf : begin");
 
         try { // Call Web Service Operation
-            providerpckg.ProviderWSService service = new providerpckg.ProviderWSService(getURL(), getQName());
+            ProviderWSService service = new ProviderWSService(getURL(), getQName());
             providerpckg.ProviderWS port = service.getProviderWSPort();
             // TODO process result here
             int result = port.endConf();

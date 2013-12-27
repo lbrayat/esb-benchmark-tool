@@ -86,7 +86,7 @@ public class PhaseLauncher implements Runnable{
             ConsumerWebService.log.debug("Request message id "+messageId+" about to be sent");
 
             // send operation in a different thread
-            Thread messageThread = new Thread(new MessageSender(port, ConsumerWebService.CONSUMER_ID, thePhase.getPayloadSize(), thePhase.getTargetConfig()));
+            Thread messageThread = new Thread(new MessageSender(port, ConsumerWebService.CONSUMER_ID, thePhase.getPayloadSize(), thePhase.getTargetConfig(), messageId));
             messageThread.start();
             
         } catch (Exception ex) {

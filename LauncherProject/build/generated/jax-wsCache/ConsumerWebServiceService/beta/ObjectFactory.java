@@ -42,11 +42,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConfigurePhaseResponse }
+     * Create an instance of {@link ConfigurePhase }
      * 
      */
-    public ConfigurePhaseResponse createConfigurePhaseResponse() {
-        return new ConfigurePhaseResponse();
+    public ConfigurePhase createConfigurePhase() {
+        return new ConfigurePhase();
     }
 
     /**
@@ -58,11 +58,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StartConfigurationResponse }
+     * Create an instance of {@link ConfigurePhaseResponse }
      * 
      */
-    public StartConfigurationResponse createStartConfigurationResponse() {
-        return new StartConfigurationResponse();
+    public ConfigurePhaseResponse createConfigurePhaseResponse() {
+        return new ConfigurePhaseResponse();
     }
 
     /**
@@ -74,11 +74,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndConfigurationResponse }
+     * Create an instance of {@link StartScenario }
      * 
      */
-    public EndConfigurationResponse createEndConfigurationResponse() {
-        return new EndConfigurationResponse();
+    public StartScenario createStartScenario() {
+        return new StartScenario();
     }
 
     /**
@@ -90,19 +90,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConfigurePhase }
+     * Create an instance of {@link StartConfigurationResponse }
      * 
      */
-    public ConfigurePhase createConfigurePhase() {
-        return new ConfigurePhase();
+    public StartConfigurationResponse createStartConfigurationResponse() {
+        return new StartConfigurationResponse();
     }
 
     /**
-     * Create an instance of {@link StartScenario }
+     * Create an instance of {@link EndConfigurationResponse }
      * 
      */
-    public StartScenario createStartScenario() {
-        return new StartScenario();
+    public EndConfigurationResponse createEndConfigurationResponse() {
+        return new EndConfigurationResponse();
     }
 
     /**

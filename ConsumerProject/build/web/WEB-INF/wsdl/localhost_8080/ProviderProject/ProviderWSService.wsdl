@@ -10,6 +10,9 @@
 <message name="operationResponse">
 <part name="parameters" element="tns:operationResponse"></part>
 </message>
+<message name="InterruptedException">
+<part name="fault" element="tns:InterruptedException"></part>
+</message>
 <message name="ping">
 <part name="parameters" element="tns:ping"></part>
 </message>
@@ -22,11 +25,11 @@
 <message name="startConfResponse">
 <part name="parameters" element="tns:startConfResponse"></part>
 </message>
-<message name="addPhase">
-<part name="parameters" element="tns:addPhase"></part>
+<message name="addConf">
+<part name="parameters" element="tns:addConf"></part>
 </message>
-<message name="addPhaseResponse">
-<part name="parameters" element="tns:addPhaseResponse"></part>
+<message name="addConfResponse">
+<part name="parameters" element="tns:addConfResponse"></part>
 </message>
 <message name="endConf">
 <part name="parameters" element="tns:endConf"></part>
@@ -38,6 +41,7 @@
 <operation name="operation">
 <input message="tns:operation"></input>
 <output message="tns:operationResponse"></output>
+<fault message="tns:InterruptedException" name="InterruptedException"></fault>
 </operation>
 <operation name="ping">
 <input message="tns:ping"></input>
@@ -47,9 +51,9 @@
 <input message="tns:startConf"></input>
 <output message="tns:startConfResponse"></output>
 </operation>
-<operation name="addPhase">
-<input message="tns:addPhase"></input>
-<output message="tns:addPhaseResponse"></output>
+<operation name="addConf">
+<input message="tns:addConf"></input>
+<output message="tns:addConfResponse"></output>
 </operation>
 <operation name="endConf">
 <input message="tns:endConf"></input>
@@ -66,6 +70,9 @@
 <output>
 <soap:body use="literal"></soap:body>
 </output>
+<fault name="InterruptedException">
+<soap:fault name="InterruptedException" use="literal"></soap:fault>
+</fault>
 </operation>
 <operation name="ping">
 <soap:operation soapAction=""></soap:operation>
@@ -85,7 +92,7 @@
 <soap:body use="literal"></soap:body>
 </output>
 </operation>
-<operation name="addPhase">
+<operation name="addConf">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>

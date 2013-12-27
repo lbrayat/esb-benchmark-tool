@@ -88,12 +88,12 @@ public class ProviderWS {
      * TODO : tempsTraitement
      */
     @WebMethod(operationName = "operation")
-    public String operation(int idConf, String payload) throws InterruptedException{
+    public String operation(long idMessage, int idConf, String payload) throws InterruptedException{
 
         System.out.println("[ProviderWS] conf id="+idConf);
         Configuration currentConf = this.confList.get(idConf);
         System.out.println("[ProviderWS] current conf="+currentConf);
-        System.out.println("[ProviderWS] Réception d'un message");
+        System.out.println("[ProviderWS] Réception d'un message, id:"+idMessage);
 
         String payloadProvider = new String(); 
         if(readyToStart == 1){

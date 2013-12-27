@@ -16,20 +16,30 @@
         </actor>
 		<actor identifier="51">
             <type>provider</type>
-            <address>http://localhost:8080/ProviderProjectWithConf/ProviderWSService?wsdl</address>
+            <address>http://localhost:8080/ProviderProject/ProviderWSService?wsdl</address>
         </actor>
-	</configuration>
+    </configuration>
     <consumers>
         <consumer identifier="1">
                 <phaseConsumer>
                     <providerId>51</providerId>
-					<targetedProviderConf>1</targetedProviderConf>
+		    <targetedProviderConf>1</targetedProviderConf>
                     <trafficClass>BE</trafficClass>
                     <numberOfRequests>1</numberOfRequests>
                     <sendPeriod>10</sendPeriod>
                     <packetSize>1024</packetSize>
                     <startDate>10</startDate>
                     <numberOfBursts>2</numberOfBursts>
+                </phaseConsumer>
+		<phaseConsumer>
+                    <providerId>51</providerId>
+		    <targetedProviderConf>1</targetedProviderConf>
+                    <trafficClass>RT</trafficClass>
+                    <numberOfRequests>5000</numberOfRequests>
+                    <sendPeriod>2</sendPeriod>
+                    <packetSize>2048</packetSize>
+                    <startDate>100</startDate>
+                    <numberOfBursts>500</numberOfBursts>
                 </phaseConsumer>
         </consumer>
 		<!--

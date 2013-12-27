@@ -21,12 +21,14 @@ public class MessageSender implements Runnable{
     int consumerId;
     int payloadSize;
     int targetConf;
+    long messageId;
 
-    public MessageSender(ProviderWS port, int consumerId, int payloadSize, int targetConf) {
+    public MessageSender(ProviderWS port, int consumerId, int payloadSize, int targetConf, long messageId) {
         this.port = port;
         this.consumerId = consumerId;
         this.payloadSize = payloadSize;
         this.targetConf = targetConf;
+        this.messageId= messageId;
     }
     
     public void run() {
@@ -39,7 +41,7 @@ public class MessageSender implements Runnable{
         // send operation in a different thread
         String result = null;
         try {
-            result = port.operation(targetConf, payload);
+            result = port.operation(messageId, targetConf, payload);
         } catch (InterruptedException_Exception ex) {
             Logger.getLogger(MessageSender.class.getName()).log(Level.SEVERE, null, ex);
         }
