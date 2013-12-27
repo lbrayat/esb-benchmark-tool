@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl" uri="src/jbiasa/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl"/>
-    <system systemId="http://localhost:8080/ConsumerProject/ConsumerWebServiceService?xsd=1" uri="src/jbiasa/localhost_8080/ConsumerProject/ConsumerWebServiceService.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/ProviderProjectWithConf/ProviderWSService?wsdl" uri="src/jbiasa/localhost_8080/ProviderProjectWithConf/ProviderWSService.wsdl"/>
-    <system systemId="http://localhost:8080/ProviderProjectWithConf/ProviderWSService?xsd=1" uri="src/jbiasa/localhost_8080/ProviderProjectWithConf/ProviderWSService.xsd_1.xsd"/>
-</catalog>
-
