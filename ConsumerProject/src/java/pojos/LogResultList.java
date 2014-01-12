@@ -50,7 +50,7 @@ public class LogResultList {
         list = new ArrayList<LogResult>();
     }
 
-    public void addLog(String idMessage, int idConf, String payload, long timestamp, boolean isInput) {
+    public synchronized void addLog(String idMessage, int idConf, String payload, long timestamp, boolean isInput) {
         list.add(new LogResult(idMessage, idConf, payload, timestamp, isInput));
     }
 

@@ -10,11 +10,11 @@
     <configuration>
         <actor identifier="1">
             <type>consumer</type>
-            <address>http://192.168.1.10:9080/CompositeApplication/consumerPort?wsdl</address>
+            <address>http://localhost:9080/CompositeApplication/consumerPort?wsdl</address>
         </actor>
         <actor identifier="51">
             <type>provider</type>
-            <address>http://192.168.1.10:9080/CompositeApplication/providerPort?wsdl</address>
+            <address>http://localhost:9080/CompositeApplication/providerPort?wsdl</address>
         </actor>
     </configuration>
     <consumers>

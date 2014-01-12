@@ -22,6 +22,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import pojos.Phase;
 import multithreading.PhaseLauncher;
+import pojos.LogResultList;
 import providerpckg.ProviderWSService;
 /**
  *
@@ -34,7 +35,7 @@ public class ConsumerWebService {
     public static AtomicInteger messageNumber;
 
     private ArrayList<Thread> threadsList;
-    private LogResultsList resultsList;
+    public static LogResultList resultsList;
 
     @WebServiceRef(wsdlLocation = "http://localhost:8080/ProviderProject/ProviderWSService?wsdl")
     private ProviderWSService service;
@@ -66,6 +67,8 @@ public class ConsumerWebService {
         log.debug("The consumer is deployed");
         threadsList = new ArrayList<Thread>();
         messageNumber = new AtomicInteger(0);
+
+        resultsList = new LogResultList();
     }
 
  
@@ -88,6 +91,7 @@ public class ConsumerWebService {
         phasesList=new ArrayList<Phase>();
         threadsList = new ArrayList<Thread>();
         messageNumber= new AtomicInteger(0);
+        resultsList = new LogResultList();
         log.debug("Previous configurations deleted");
     }
 
@@ -139,12 +143,27 @@ public class ConsumerWebService {
                 Thread t = new Thread(new PhaseLauncher(p));
                 threadsList.add(t);
                 t.start();
+
+                for (Thread t1 : threadsList){
+                    try {
+                        log.debug("A thread has been joined");
+                        t1.join();
+                    } catch (InterruptedException ex) {
+                        log.fatal(ConsumerWebService.class.getName());
+                    }
+                }
+                log.debug("All phases have ended");
+                // send message to launcher to say we're done.
+               onFinish();
+
             }
 
 
         }
 
     }
+
+    
 
     private URL getURL() {
 
@@ -163,6 +182,25 @@ public class ConsumerWebService {
 
     private QName getQName() {
         return new QName("http://providerPckg/", "ProviderWSService");
+    }
+
+    private void onFinish(){
+        
+        String nextLog=resultsList.getFirstLog();
+        log.debug(nextLog);
+        while (!nextLog.equalsIgnoreCase("")){
+            nextLog=resultsList.getNextLog();
+            log.debug(nextLog);
+        }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getResults")
+    public String getResults() {
+        //TODO write your implementation code here:
+        return "Les resultats !!";
     }
 
     
