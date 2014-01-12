@@ -10,22 +10,22 @@
     <configuration>
         <actor identifier="1">
             <type>consumer</type>
-            <address>http://192.168.1.10:9080/CompositeApplication/consumerPort?wsdl</address>
+            <address>http://192.168.1.12:9080/CompositeApplication/consumerPort?wsdl</address>
         </actor>
         <actor identifier="51">
             <type>provider</type>
-            <address>http://192.168.1.10:9080/CompositeApplication/providerPort?wsdl</address>
+            <address>http://192.168.1.12:9080/CompositeApplication/providerPort?wsdl</address>
         </actor>
     </configuration>
     <consumers>
         <consumer identifier="1">
                 <phaseConsumer>
                     <providerId>51</providerId>
-		    <targetedProviderConf>2</targetedProviderConf>
+		    <targetedProviderConf>1</targetedProviderConf>
                     <trafficClass>BE</trafficClass>
                     <numberOfRequests>2</numberOfRequests>
                     <sendPeriod>10</sendPeriod>
-                    <packetSize>2</packetSize>
+                    <packetSize>5</packetSize>
                     <startDate>10</startDate>
                     <numberOfBursts>1</numberOfBursts>
                 </phaseConsumer>
@@ -33,9 +33,9 @@
                     <providerId>51</providerId>
 		    <targetedProviderConf>1</targetedProviderConf>
                     <trafficClass>RT</trafficClass>
-                    <numberOfRequests>2</numberOfRequests>
+                    <numberOfRequests>4</numberOfRequests>
                     <sendPeriod>10</sendPeriod>
-                    <packetSize>3</packetSize>
+                    <packetSize>10</packetSize>
                     <startDate>30</startDate>
                     <numberOfBursts>1</numberOfBursts>
                 </phaseConsumer>
@@ -43,14 +43,15 @@
     </consumers>
     <providers>
         <provider identifier="51">
-            <phaseProvider id="1">
-                <processingTime>60</processingTime>
-                <packetSize>5</packetSize>
+            <phaseProvider id="0">
+                <processingTime>1</processingTime>
+                <packetSize>4</packetSize>
                 <percentageLoss>0</percentageLoss>
-            </phaseProvider> 
-            <phaseProvider id="2">
+            </phaseProvider>
+            
+            <phaseProvider id="1">
                 <processingTime>2</processingTime>
-                <packetSize>10</packetSize>
+                <packetSize>5</packetSize>
                 <percentageLoss>0</percentageLoss>
             </phaseProvider>
         </provider>

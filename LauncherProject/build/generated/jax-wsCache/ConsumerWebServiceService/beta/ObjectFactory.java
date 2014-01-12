@@ -42,27 +42,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConfigurePhase }
+     * Create an instance of {@link StartScenario }
      * 
      */
-    public ConfigurePhase createConfigurePhase() {
-        return new ConfigurePhase();
-    }
-
-    /**
-     * Create an instance of {@link StartConfiguration }
-     * 
-     */
-    public StartConfiguration createStartConfiguration() {
-        return new StartConfiguration();
-    }
-
-    /**
-     * Create an instance of {@link ConfigurePhaseResponse }
-     * 
-     */
-    public ConfigurePhaseResponse createConfigurePhaseResponse() {
-        return new ConfigurePhaseResponse();
+    public StartScenario createStartScenario() {
+        return new StartScenario();
     }
 
     /**
@@ -74,19 +58,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StartScenario }
+     * Create an instance of {@link EndConfigurationResponse }
      * 
      */
-    public StartScenario createStartScenario() {
-        return new StartScenario();
+    public EndConfigurationResponse createEndConfigurationResponse() {
+        return new EndConfigurationResponse();
     }
 
     /**
-     * Create an instance of {@link PingResponse }
+     * Create an instance of {@link StartConfiguration }
      * 
      */
-    public PingResponse createPingResponse() {
-        return new PingResponse();
+    public StartConfiguration createStartConfiguration() {
+        return new StartConfiguration();
     }
 
     /**
@@ -98,19 +82,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndConfigurationResponse }
-     * 
-     */
-    public EndConfigurationResponse createEndConfigurationResponse() {
-        return new EndConfigurationResponse();
-    }
-
-    /**
      * Create an instance of {@link EndConfiguration }
      * 
      */
     public EndConfiguration createEndConfiguration() {
         return new EndConfiguration();
+    }
+
+    /**
+     * Create an instance of {@link PingResponse }
+     * 
+     */
+    public PingResponse createPingResponse() {
+        return new PingResponse();
+    }
+
+    /**
+     * Create an instance of {@link ConfigurePhase }
+     * 
+     */
+    public ConfigurePhase createConfigurePhase() {
+        return new ConfigurePhase();
+    }
+
+    /**
+     * Create an instance of {@link ConfigurePhaseResponse }
+     * 
+     */
+    public ConfigurePhaseResponse createConfigurePhaseResponse() {
+        return new ConfigurePhaseResponse();
     }
 
     /**

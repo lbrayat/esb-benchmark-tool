@@ -44,11 +44,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link OperationResponse }
+     * Create an instance of {@link PingResponse }
      * 
      */
-    public OperationResponse createOperationResponse() {
-        return new OperationResponse();
+    public PingResponse createPingResponse() {
+        return new PingResponse();
     }
 
     /**
@@ -57,6 +57,62 @@ public class ObjectFactory {
      */
     public StartConfResponse createStartConfResponse() {
         return new StartConfResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddConfResponse }
+     * 
+     */
+    public AddConfResponse createAddConfResponse() {
+        return new AddConfResponse();
+    }
+
+    /**
+     * Create an instance of {@link Operation }
+     * 
+     */
+    public Operation createOperation() {
+        return new Operation();
+    }
+
+    /**
+     * Create an instance of {@link InterruptedException }
+     * 
+     */
+    public InterruptedException createInterruptedException() {
+        return new InterruptedException();
+    }
+
+    /**
+     * Create an instance of {@link Ping }
+     * 
+     */
+    public Ping createPing() {
+        return new Ping();
+    }
+
+    /**
+     * Create an instance of {@link EndConfResponse }
+     * 
+     */
+    public EndConfResponse createEndConfResponse() {
+        return new EndConfResponse();
+    }
+
+    /**
+     * Create an instance of {@link EndConf }
+     * 
+     */
+    public EndConf createEndConf() {
+        return new EndConf();
+    }
+
+    /**
+     * Create an instance of {@link OperationResponse }
+     * 
+     */
+    public OperationResponse createOperationResponse() {
+        return new OperationResponse();
     }
 
     /**
@@ -73,62 +129,6 @@ public class ObjectFactory {
      */
     public StartConf createStartConf() {
         return new StartConf();
-    }
-
-    /**
-     * Create an instance of {@link Operation }
-     * 
-     */
-    public Operation createOperation() {
-        return new Operation();
-    }
-
-    /**
-     * Create an instance of {@link AddConfResponse }
-     * 
-     */
-    public AddConfResponse createAddConfResponse() {
-        return new AddConfResponse();
-    }
-
-    /**
-     * Create an instance of {@link Ping }
-     * 
-     */
-    public Ping createPing() {
-        return new Ping();
-    }
-
-    /**
-     * Create an instance of {@link InterruptedException }
-     * 
-     */
-    public InterruptedException createInterruptedException() {
-        return new InterruptedException();
-    }
-
-    /**
-     * Create an instance of {@link EndConfResponse }
-     * 
-     */
-    public EndConfResponse createEndConfResponse() {
-        return new EndConfResponse();
-    }
-
-    /**
-     * Create an instance of {@link PingResponse }
-     * 
-     */
-    public PingResponse createPingResponse() {
-        return new PingResponse();
-    }
-
-    /**
-     * Create an instance of {@link EndConf }
-     * 
-     */
-    public EndConf createEndConf() {
-        return new EndConf();
     }
 
     /**

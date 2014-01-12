@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class Main {
 
     private static final Logger logger = Logger.getLogger("Launcher");
-    private static final String FILE_PATH = "/home/marc/NetBeansProjects/esb-benchmark-tool/scenario.xml";
+    private static final String FILE_PATH = "C:/Users/19012831/SOA/esb-benchmark-tool/scenario.xml";
 
     /**
      * @param args the command line arguments
