@@ -44,43 +44,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link EndConfResponse }
+     * 
+     */
+    public EndConfResponse createEndConfResponse() {
+        return new EndConfResponse();
+    }
+
+    /**
      * Create an instance of {@link PingResponse }
      * 
      */
     public PingResponse createPingResponse() {
         return new PingResponse();
-    }
-
-    /**
-     * Create an instance of {@link StartConfResponse }
-     * 
-     */
-    public StartConfResponse createStartConfResponse() {
-        return new StartConfResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddConfResponse }
-     * 
-     */
-    public AddConfResponse createAddConfResponse() {
-        return new AddConfResponse();
-    }
-
-    /**
-     * Create an instance of {@link Operation }
-     * 
-     */
-    public Operation createOperation() {
-        return new Operation();
-    }
-
-    /**
-     * Create an instance of {@link InterruptedException }
-     * 
-     */
-    public InterruptedException createInterruptedException() {
-        return new InterruptedException();
     }
 
     /**
@@ -92,11 +68,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndConfResponse }
+     * Create an instance of {@link AddConf }
      * 
      */
-    public EndConfResponse createEndConfResponse() {
-        return new EndConfResponse();
+    public AddConf createAddConf() {
+        return new AddConf();
+    }
+
+    /**
+     * Create an instance of {@link StartConfResponse }
+     * 
+     */
+    public StartConfResponse createStartConfResponse() {
+        return new StartConfResponse();
     }
 
     /**
@@ -108,6 +92,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AddConfResponse }
+     * 
+     */
+    public AddConfResponse createAddConfResponse() {
+        return new AddConfResponse();
+    }
+
+    /**
      * Create an instance of {@link OperationResponse }
      * 
      */
@@ -116,11 +108,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddConf }
+     * Create an instance of {@link InterruptedException }
      * 
      */
-    public AddConf createAddConf() {
-        return new AddConf();
+    public InterruptedException createInterruptedException() {
+        return new InterruptedException();
     }
 
     /**
@@ -129,6 +121,14 @@ public class ObjectFactory {
      */
     public StartConf createStartConf() {
         return new StartConf();
+    }
+
+    /**
+     * Create an instance of {@link Operation }
+     * 
+     */
+    public Operation createOperation() {
+        return new Operation();
     }
 
     /**

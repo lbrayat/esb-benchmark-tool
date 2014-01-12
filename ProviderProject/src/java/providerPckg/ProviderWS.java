@@ -88,7 +88,7 @@ public class ProviderWS {
      * TODO : tempsTraitement
      */
     @WebMethod(operationName = "operation")
-    public String operation(long idMessage, int idConf, String payload) throws InterruptedException{
+    public String operation(String idMessage, int idConf, String payload) throws InterruptedException{
 
         System.out.println("[ProviderWS] conf id="+idConf);
         Configuration currentConf = this.confList.get(idConf);

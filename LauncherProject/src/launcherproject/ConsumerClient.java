@@ -26,7 +26,7 @@ public class ConsumerClient extends ESBWSClient {
         protected URL getURL() {
 
         URL url = null;
-        URL baseUrl;
+        URL baseUrl; 
         baseUrl = beta.ConsumerWebServiceService.class.getResource(".");
         try {
             url = new URL(baseUrl, mWSDL);

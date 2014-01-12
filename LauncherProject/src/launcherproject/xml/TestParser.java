@@ -12,7 +12,7 @@ public class TestParser {
         {
             System.out.println("Programme de test du parseur XML");
             ScenarioXML scenario = new ScenarioXML ();
-            String fileName = "/home/marc/Downloads/scenario.xml";
+            String fileName = "/home/marc/NetBeansProjects/esb-benchmark-tool/scenario.xml";
             setParser(new Parser(fileName));
             getParser().doParse();
             scenario.setConfigurationXML(parser.getConfigurationXML());

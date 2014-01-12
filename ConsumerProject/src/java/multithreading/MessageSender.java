@@ -21,9 +21,9 @@ public class MessageSender implements Runnable{
     int consumerId;
     int payloadSize;
     int targetConf;
-    long messageId;
+    String messageId;
 
-    public MessageSender(ProviderWS port, int consumerId, int payloadSize, int targetConf, long messageId) {
+    public MessageSender(ProviderWS port, int consumerId, int payloadSize, int targetConf, String messageId) {
         this.port = port;
         this.consumerId = consumerId;
         this.payloadSize = payloadSize;

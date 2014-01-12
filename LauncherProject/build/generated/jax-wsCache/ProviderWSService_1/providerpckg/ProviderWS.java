@@ -38,7 +38,7 @@ public interface ProviderWS {
     @ResponseWrapper(localName = "operationResponse", targetNamespace = "http://providerPckg/", className = "providerpckg.OperationResponse")
     public String operation(
         @WebParam(name = "arg0", targetNamespace = "")
-        long arg0,
+        String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         int arg1,
         @WebParam(name = "arg2", targetNamespace = "")

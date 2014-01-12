@@ -34,6 +34,7 @@ public class ConsumerWebService {
     public static AtomicInteger messageNumber;
 
     private ArrayList<Thread> threadsList;
+    private LogResultsList resultsList;
 
     @WebServiceRef(wsdlLocation = "http://localhost:8080/ProviderProject/ProviderWSService?wsdl")
     private ProviderWSService service;
@@ -163,6 +164,8 @@ public class ConsumerWebService {
     private QName getQName() {
         return new QName("http://providerPckg/", "ProviderWSService");
     }
+
+    
 
 
 }
