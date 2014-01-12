@@ -1,7 +1,15 @@
 *.class
-**/build
-**/dist
+/CompositeApplication/build/*
+/CompositeApplication/dist/*
+/LauncherProject/build/*
+/LauncherProject/dist/*
+/LauncherProject/src/META-INF/*
+/ProviderProject/build/*
+/ConsumerProject/build/*
+/CompositeApplication/nbproject/*
+/ConsumerProject/nbproject/*
+/LauncherProject/nbproject/*
+/ProviderProject/nbproject/*
 # Package Files #
 *.war
 *.ear
-CompositeApplication/dist/CompositeApplicationByLoic.zip
