@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:ns1="CompositeApplicationByLoic" xmlns:ns2="http://beta/" xmlns:ns3="http://providerPckg/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/jbi ./jbi.xsd">
+    <service-assembly>
+        <identification>
+            <name>CompositeApplicationByLoic</name>
+            <description>Represents the Service Assembly of CompositeApplicationByLoic</description>
+        </identification>
+        <service-unit>
+            <identification>
+                <name>CompositeApplicationByLoic-sun-http-binding</name>
+                <description>Represents this Service Unit</description>
+            </identification>
+            <target>
+                <artifacts-zip>sun-http-binding.jar</artifacts-zip>
+                <component-name>sun-http-binding</component-name>
+            </target>
+        </service-unit>
+        <connections>
+            <connection>
+                <consumer endpoint-name="consumerPort" service-name="ns1:CompositeApplicationByLoicService1"/>
+                <provider endpoint-name="ConsumerWebServicePort" service-name="ns2:ConsumerWebServiceService"/>
+            </connection>
+            <connection>
+                <consumer endpoint-name="providerPort" service-name="ns1:CompositeApplicationByLoicService2"/>
+                <provider endpoint-name="ProviderWSPort" service-name="ns3:ProviderWSService"/>
+            </connection>
+        </connections>
+    </service-assembly>
+</jbi>

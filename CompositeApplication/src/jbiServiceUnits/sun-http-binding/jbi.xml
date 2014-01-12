@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:ns1="CompositeApplicationByLoic" xmlns:ns2="http://beta/" xmlns:ns3="http://providerPckg/" version="1.0">
+    <services binding-component="true">
+        <provides endpoint-name="ConsumerWebServicePort" interface-name="ns2:ConsumerWebService" service-name="ns2:ConsumerWebServiceService"/>
+        <provides endpoint-name="ProviderWSPort" interface-name="ns3:ProviderWS" service-name="ns3:ProviderWSService"/>
+        <consumes endpoint-name="consumerPort" interface-name="ns2:ConsumerWebService" service-name="ns1:CompositeApplicationByLoicService1"/>
+        <consumes endpoint-name="providerPort" interface-name="ns3:ProviderWS" service-name="ns1:CompositeApplicationByLoicService2"/>
+    </services>
+</jbi>
