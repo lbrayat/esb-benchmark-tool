@@ -6,10 +6,10 @@
 /LauncherProject/src/META-INF/*
 /ProviderProject/build/*
 /ConsumerProject/build/*
-/CompositeApplication/nbproject/*
-/ConsumerProject/nbproject/*
-/LauncherProject/nbproject/*
-/ProviderProject/nbproject/*
+/CompositeApplication/nbproject/private/*
+/ConsumerProject/nbproject/private/*
+/LauncherProject/nbproject/private/*
+/ProviderProject/nbproject/private/*
 # Package Files #
 *.war
 *.ear
