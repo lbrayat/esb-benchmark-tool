@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
+import launcherproject.results.ResultsSingletonFactory;
 import launcherproject.xml.PhaseProvider;
 import providerpckg.ProviderWSService;
 
@@ -124,6 +125,31 @@ public class ProviderClient extends ESBWSClient {
 
         logger.log(Level.INFO, "callAddPhase : complete");
     }
+
+    /**
+     * Results are fetched and added to the results singleton
+     * @param isFirst
+     * @return results fetched
+     */
+    public String callGetResults(boolean isFirst){
+
+        logger.log(Level.INFO, "callGetResults : begin");
+
+        providerpckg.ProviderWSService service = new providerpckg.ProviderWSService();
+        providerpckg.ProviderWS port = service.getProviderWSPort();
+        
+        String results = port.getResults(isFirst);
+
+        if (!results.isEmpty())
+            ResultsSingletonFactory.getInstance().addResults(results);
+
+        logger.log(Level.INFO, "callGetResults : done");
+
+        return results;
+
+    }
+
+
 
     public int start() {
         return callStart();

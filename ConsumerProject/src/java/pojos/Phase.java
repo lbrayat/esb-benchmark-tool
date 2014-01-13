@@ -14,6 +14,7 @@ import java.util.Calendar;
  */
 public class Phase {
 
+    int recepientID;
     String recepientAddress;
     int numberOfRequests;
     int sendingPeriod;
@@ -24,7 +25,7 @@ public class Phase {
 
 
 
-    public Phase(String recepientAddress, int numberOfRequests, int sendingPeriod, 
+    public Phase(int providerID, String recepientAddress, int numberOfRequests, int sendingPeriod,
             int payloadSize, int repetitions, Calendar startDate, int targetedProviderConfiguration) {
         this.recepientAddress = recepientAddress;
         this.numberOfRequests = numberOfRequests;
@@ -33,6 +34,7 @@ public class Phase {
         this.repetitions = repetitions;
         this.startDate = startDate;
         this.targetConfig = targetedProviderConfiguration;
+        this.recepientID = providerID;
     }
 
     public int getNumberOfRequests() {
@@ -59,6 +61,10 @@ public class Phase {
         return repetitions;
     }
 
+    public int getRecepientID(){
+        return recepientID;
+    }
+
     public int getSendingPeriod() {
         return sendingPeriod;
     }
@@ -81,6 +87,10 @@ public class Phase {
 
     public void setRepetitions(int repetitions) {
         this.repetitions = repetitions;
+    }
+
+    public void setRecepientID(int id){
+        this.recepientID = id;
     }
 
     public void setSendingPeriod(int sendingPeriod) {

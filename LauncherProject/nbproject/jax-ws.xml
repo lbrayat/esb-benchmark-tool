@@ -2,32 +2,8 @@
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services/>
   <clients>
-    <client name="ConsumerWebServiceService">
-      <wsdl-url>http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl</local-wsdl-file>
-      <package-name>beta</package-name>
-      <catalog-file>catalog.xml</catalog-file>
-      <wsimport-options>
-        <wsimport-option>
-          <wsimport-option-name>extension</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>verbose</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xnocompile</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-      </wsimport-options>
-    </client>
-   
-    <client name="ProviderWSService_1">
+    
+    <client name="ProviderWSService_2">
       <wsdl-url>http://localhost:8080/ProviderProject/ProviderWSService?wsdl</wsdl-url>
       <local-wsdl-file>localhost_8080/ProviderProject/ProviderWSService.wsdl</local-wsdl-file>
       <package-name>providerpckg</package-name>
@@ -44,6 +20,30 @@
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
           <wsimport-option-value>http://localhost:8080/ProviderProject/ProviderWSService?wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="ConsumerWebServiceService_2">
+      <wsdl-url>http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl</local-wsdl-file>
+      <package-name>beta</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>

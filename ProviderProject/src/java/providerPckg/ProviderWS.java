@@ -90,6 +90,8 @@ public class ProviderWS {
     @WebMethod(operationName = "operation")
     public String operation(String idMessage, int idConf, String payload) throws InterruptedException{
 
+        LogResultListSingletonFactory.getInstance().addLog(idMessage, idConf, payload, new GregorianCalendar().getTimeInMillis(), LogResultList.IN_PROVIDER);
+
         System.out.println("[ProviderWS] conf id="+idConf);
         Configuration currentConf = this.confList.get(idConf);
         System.out.println("[ProviderWS] current conf="+currentConf);
@@ -112,7 +114,20 @@ public class ProviderWS {
         }
         
         System.out.println("Envoi d'un message");
+        LogResultListSingletonFactory.getInstance().addLog(idMessage, idConf, payloadProvider, new GregorianCalendar().getTimeInMillis(), LogResultList.OUT_PROVIDER);
         return payloadProvider;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getResults")
+    public String getResults(@WebParam(name = "isFirst")
+    boolean isFirst) {
+         if (isFirst)
+            return LogResultListSingletonFactory.getInstance().getFirstLog();
+        else
+            return LogResultListSingletonFactory.getInstance().getNextLog();
     }
 
     

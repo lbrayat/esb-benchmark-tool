@@ -13,6 +13,12 @@
 <message name="InterruptedException">
 <part name="fault" element="tns:InterruptedException"></part>
 </message>
+<message name="getResults">
+<part name="parameters" element="tns:getResults"></part>
+</message>
+<message name="getResultsResponse">
+<part name="parameters" element="tns:getResultsResponse"></part>
+</message>
 <message name="ping">
 <part name="parameters" element="tns:ping"></part>
 </message>
@@ -42,6 +48,10 @@
 <input message="tns:operation"></input>
 <output message="tns:operationResponse"></output>
 <fault message="tns:InterruptedException" name="InterruptedException"></fault>
+</operation>
+<operation name="getResults">
+<input message="tns:getResults"></input>
+<output message="tns:getResultsResponse"></output>
 </operation>
 <operation name="ping">
 <input message="tns:ping"></input>
@@ -73,6 +83,15 @@
 <fault name="InterruptedException">
 <soap:fault name="InterruptedException" use="literal"></soap:fault>
 </fault>
+</operation>
+<operation name="getResults">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
 </operation>
 <operation name="ping">
 <soap:operation soapAction=""></soap:operation>

@@ -23,6 +23,7 @@ import org.apache.log4j.Logger;
 import pojos.Phase;
 import multithreading.PhaseLauncher;
 import pojos.LogResultList;
+import pojos.LogResultListSingletonFactory;
 import providerpckg.ProviderWSService;
 /**
  *
@@ -35,7 +36,6 @@ public class ConsumerWebService {
     public static AtomicInteger messageNumber;
 
     private ArrayList<Thread> threadsList;
-    public static LogResultList resultsList;
 
     @WebServiceRef(wsdlLocation = "http://localhost:8080/ProviderProject/ProviderWSService?wsdl")
     private ProviderWSService service;
@@ -68,7 +68,6 @@ public class ConsumerWebService {
         threadsList = new ArrayList<Thread>();
         messageNumber = new AtomicInteger(0);
 
-        resultsList = new LogResultList();
     }
 
  
@@ -91,7 +90,7 @@ public class ConsumerWebService {
         phasesList=new ArrayList<Phase>();
         threadsList = new ArrayList<Thread>();
         messageNumber= new AtomicInteger(0);
-        resultsList = new LogResultList();
+        LogResultListSingletonFactory.resetInstance();
         log.debug("Previous configurations deleted");
     }
 
@@ -99,7 +98,8 @@ public class ConsumerWebService {
      * Web service operation
      */
     @WebMethod(operationName = "configurePhase")
-    public void configurePhase(@WebParam(name = "recepientAddress")
+    public void configurePhase(@WebParam(name = "providerID")
+    int providerID, @WebParam(name = "recepientAddress")
     String recepientAddress,@WebParam(name = "phaseNumber")
     int phaseNumber, @WebParam(name = "NumberOfrequests")
     int targetedProviderConfiguration, @WebParam(name = "targetedProviderConfiguration")
@@ -114,7 +114,7 @@ public class ConsumerWebService {
         log.debug("timestamp long : "+startDate);
         startDateInCal.setTimeInMillis(startDate);
 
-        Phase newPhase = new Phase(recepientAddress, NumberOfrequests,
+        Phase newPhase = new Phase(providerID, recepientAddress, NumberOfrequests,
                 sendingPeriod, payloadSize, repetitions, startDateInCal, targetedProviderConfiguration);
 
         phasesList.add(newPhase);
@@ -143,10 +143,11 @@ public class ConsumerWebService {
                 Thread t = new Thread(new PhaseLauncher(p));
                 threadsList.add(t);
                 t.start();
+            }
 
-                for (Thread t1 : threadsList){
+            for (Thread t1 : threadsList){
                     try {
-                        log.debug("A thread has been joined");
+                        log.debug("A thread has joined");
                         t1.join();
                     } catch (InterruptedException ex) {
                         log.fatal(ConsumerWebService.class.getName());
@@ -155,8 +156,6 @@ public class ConsumerWebService {
                 log.debug("All phases have ended");
                 // send message to launcher to say we're done.
                onFinish();
-
-            }
 
 
         }
@@ -186,10 +185,10 @@ public class ConsumerWebService {
 
     private void onFinish(){
         
-        String nextLog=resultsList.getFirstLog();
+        String nextLog= LogResultListSingletonFactory.getInstance().getFirstLog();
         log.debug(nextLog);
         while (!nextLog.equalsIgnoreCase("")){
-            nextLog=resultsList.getNextLog();
+            nextLog=LogResultListSingletonFactory.getInstance().getNextLog();
             log.debug(nextLog);
         }
     }
@@ -198,10 +197,17 @@ public class ConsumerWebService {
      * Web service operation
      */
     @WebMethod(operationName = "getResults")
-    public String getResults() {
-        //TODO write your implementation code here:
-        return "Les resultats !!";
+    public String getResults(@WebParam(name = "isFirst")
+    boolean isFirst) {
+
+        if (isFirst)
+            return LogResultListSingletonFactory.getInstance().getFirstLog();
+        else
+            return LogResultListSingletonFactory.getInstance().getNextLog();
     }
+
+    
+
 
     
 

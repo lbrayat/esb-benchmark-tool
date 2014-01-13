@@ -8,6 +8,10 @@
 
 <xs:element name="endConfigurationResponse" type="tns:endConfigurationResponse"></xs:element>
 
+<xs:element name="getResults" type="tns:getResults"></xs:element>
+
+<xs:element name="getResultsResponse" type="tns:getResultsResponse"></xs:element>
+
 <xs:element name="ping" type="tns:ping"></xs:element>
 
 <xs:element name="pingResponse" type="tns:pingResponse"></xs:element>
@@ -36,8 +40,21 @@
 <xs:sequence></xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getResults">
+<xs:sequence>
+<xs:element name="isFirst" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getResultsResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="configurePhase">
 <xs:sequence>
+<xs:element name="providerID" type="xs:int"></xs:element>
 <xs:element name="recepientAddress" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="phaseNumber" type="xs:int"></xs:element>
 <xs:element name="NumberOfrequests" type="xs:int"></xs:element>

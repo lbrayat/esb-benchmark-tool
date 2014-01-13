@@ -2,12 +2,12 @@
 <jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/jbi ./jbi.xsd">
     <service-assembly>
         <identification>
-            <name>CompositeApplicationByLoic</name>
-            <description>Represents the Service Assembly of CompositeApplicationByLoic</description>
+            <name>CompositeApplication</name>
+            <description>Represents the Service Assembly of CompositeApplication</description>
         </identification>
         <service-unit>
             <identification>
-                <name>CompositeApplicationByLoic-sun-database-binding</name>
+                <name>CompositeApplication-sun-database-binding</name>
                 <description>Represents this Service Unit</description>
             </identification>
             <target>
@@ -17,7 +17,7 @@
         </service-unit>
         <service-unit>
             <identification>
-                <name>CompositeApplicationByLoic-sun-email-binding</name>
+                <name>CompositeApplication-sun-email-binding</name>
                 <description>Represents this Service Unit</description>
             </identification>
             <target>
@@ -27,7 +27,7 @@
         </service-unit>
         <service-unit>
             <identification>
-                <name>CompositeApplicationByLoic-sun-file-binding</name>
+                <name>CompositeApplication-sun-file-binding</name>
                 <description>Represents this Service Unit</description>
             </identification>
             <target>
@@ -37,7 +37,7 @@
         </service-unit>
         <service-unit>
             <identification>
-                <name>CompositeApplicationByLoic-sun-ftp-binding</name>
+                <name>CompositeApplication-sun-ftp-binding</name>
                 <description>Represents this Service Unit</description>
             </identification>
             <target>
@@ -47,7 +47,7 @@
         </service-unit>
         <service-unit>
             <identification>
-                <name>CompositeApplicationByLoic-sun-http-binding</name>
+                <name>CompositeApplication-sun-http-binding</name>
                 <description>Represents this Service Unit</description>
             </identification>
             <target>
@@ -57,7 +57,7 @@
         </service-unit>
         <service-unit>
             <identification>
-                <name>CompositeApplicationByLoic-sun-jms-binding</name>
+                <name>CompositeApplication-sun-jms-binding</name>
                 <description>Represents this Service Unit</description>
             </identification>
             <target>
@@ -67,7 +67,7 @@
         </service-unit>
         <service-unit>
             <identification>
-                <name>CompositeApplicationByLoic-sun-ldap-binding</name>
+                <name>CompositeApplication-sun-ldap-binding</name>
                 <description>Represents this Service Unit</description>
             </identification>
             <target>
@@ -77,7 +77,7 @@
         </service-unit>
         <service-unit>
             <identification>
-                <name>CompositeApplicationByLoic-sun-rest-binding</name>
+                <name>CompositeApplication-sun-rest-binding</name>
                 <description>Represents this Service Unit</description>
             </identification>
             <target>
@@ -87,7 +87,7 @@
         </service-unit>
         <service-unit>
             <identification>
-                <name>CompositeApplicationByLoic-sun-scheduler-binding</name>
+                <name>CompositeApplication-sun-scheduler-binding</name>
                 <description>Represents this Service Unit</description>
             </identification>
             <target>

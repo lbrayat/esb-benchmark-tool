@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/ConsumerProject/ConsumerWebServiceService?WSDL" uri="xml-resources/web-service-references/ConsumerWebServiceService_2/wsdl/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl"/>
-    <system systemId="http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl" uri="xml-resources/web-service-references/ConsumerWebServiceService/wsdl/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl"/>
-    <system systemId="http://localhost:8080/ConsumerProject/ConsumerWebServiceService?xsd=1" uri="xml-resources/web-service-references/ConsumerWebServiceService/wsdl/localhost_8080/ConsumerProject/ConsumerWebServiceService.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/ProviderProject/ProviderWSService?wsdl" uri="xml-resources/web-service-references/ProviderWSService_1/wsdl/localhost_8080/ProviderProject/ProviderWSService.wsdl"/>
-    <system systemId="http://localhost:8080/ProviderProject/ProviderWSService?xsd=1" uri="xml-resources/web-service-references/ProviderWSService_1/wsdl/localhost_8080/ProviderProject/ProviderWSService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ProviderProject/ProviderWSService?wsdl" uri="xml-resources/web-service-references/ProviderWSService_2/wsdl/localhost_8080/ProviderProject/ProviderWSService.wsdl"/>
+    <system systemId="http://localhost:8080/ProviderProject/ProviderWSService?xsd=1" uri="xml-resources/web-service-references/ProviderWSService_2/wsdl/localhost_8080/ProviderProject/ProviderWSService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl" uri="xml-resources/web-service-references/ConsumerWebServiceService_2/wsdl/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl"/>
+    <system systemId="http://localhost:8080/ConsumerProject/ConsumerWebServiceService?xsd=1" uri="xml-resources/web-service-references/ConsumerWebServiceService_2/wsdl/localhost_8080/ConsumerProject/ConsumerWebServiceService.xsd_1.xsd"/>
 </catalog>
+
+
+
+
 
 
 

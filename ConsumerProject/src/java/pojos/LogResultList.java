@@ -14,10 +14,17 @@ import java.util.List;
  */
 public class LogResultList {
 
+    public static final int OUT_CONSUMER = 1;
+    public static final int IN_PROVIDER = 2;
+    public static final int OUT_PROVIDER = 3;
+    public static final int IN_CONSUMER = 4;
+
     private List<LogResult> list;
     private static int NB_OF_RESULT = 100;
 
-    private static int offsetForGet = 0;
+    private int offsetForGet = 0;
+
+
 
     private class LogResult {
 
@@ -25,14 +32,14 @@ public class LogResultList {
         int idConf;
         String payload;
         long timestamp;
-        boolean isInput;
+        int inoutType;
 
-        public LogResult(String idMessage, int idConf, String payload, long timestamp, boolean input) {
+        public LogResult(String idMessage, int idConf, String payload, long timestamp, int input) {
             this.idMessage = idMessage;
             this.idConf = idConf;
             this.payload = payload;
             this.timestamp = timestamp;
-            this.isInput = input;
+            this.inoutType = input;
         }
 
         @Override
@@ -41,7 +48,7 @@ public class LogResultList {
                     + ";" + String.valueOf(idConf)
                     + ";" + payload
                     + ";" + timestamp
-                    + ";" + (isInput ? "I" : "O");
+                    + ";" + inoutType;
         }
 
     }
@@ -50,8 +57,10 @@ public class LogResultList {
         list = new ArrayList<LogResult>();
     }
 
-    public synchronized void addLog(String idMessage, int idConf, String payload, long timestamp, boolean isInput) {
+    public synchronized void addLog(String idMessage, int idConf, String payload, long timestamp, int isInput) {
+        
         list.add(new LogResult(idMessage, idConf, payload, timestamp, isInput));
+        System.out.println("[Log Result List] a log is added, list size : "+list.size());
     }
 
     public String getFirstLog() {
@@ -62,16 +71,17 @@ public class LogResultList {
 
     public String getNextLog() {
         String result = "";
-
         for (int i = 0; i < NB_OF_RESULT; i++) {
             int indexToGet = offsetForGet + i;
-            if (list.size() <= indexToGet) {
-                result = result + list.get(indexToGet) + "\n";
+            if (list.size() > indexToGet) {
+                result = result + list.get(indexToGet).toString() + "\n";
             }
             else {
                 break;
             }
         }
+
+        offsetForGet+=NB_OF_RESULT;
 
         return result;
     }

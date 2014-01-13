@@ -1,0 +1,19 @@
+========================================================
+Writing results to file at 2014/01/13 16:29:46
+========================================================
+ProviderID:51ConsumerID:1-MessageID:0;2;BB;1389626876475;2
+ProviderID:51ConsumerID:1-MessageID:1;2;BB;1389626876476;2
+ProviderID:51ConsumerID:1-MessageID:1;2;AAAAAAAAAA;1389626876481;3
+ProviderID:51ConsumerID:1-MessageID:0;2;AAAAAAAAAA;1389626876481;3
+ProviderID:51ConsumerID:1-MessageID:2;1;BBB;1389626896568;2
+ProviderID:51ConsumerID:1-MessageID:3;1;BBB;1389626896573;2
+ProviderID:51ConsumerID:1-MessageID:2;1;AAAAA;1389626896632;3
+ProviderID:51ConsumerID:1-MessageID:3;1;AAAAA;1389626896634;3
+ProviderID:51ConsumerID:1-MessageID:0;2;BB;1389626876467;1
+ProviderID:51ConsumerID:1-MessageID:1;2;BB;1389626876469;1
+ProviderID:51ConsumerID:1-MessageID:0;2;AAAAAAAAAA;1389626876484;4
+ProviderID:51ConsumerID:1-MessageID:1;2;AAAAAAAAAA;1389626876484;4
+ProviderID:51ConsumerID:1-MessageID:2;1;BBB;1389626896565;1
+ProviderID:51ConsumerID:1-MessageID:3;1;BBB;1389626896568;1
+ProviderID:51ConsumerID:1-MessageID:2;1;AAAAA;1389626896635;4
+ProviderID:51ConsumerID:1-MessageID:3;1;AAAAA;1389626896639;4

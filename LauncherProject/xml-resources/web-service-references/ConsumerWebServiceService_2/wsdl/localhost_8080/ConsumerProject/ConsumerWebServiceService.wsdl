@@ -4,6 +4,12 @@
 <xsd:import namespace="http://beta/" schemaLocation="http://localhost:8080/ConsumerProject/ConsumerWebServiceService?xsd=1"></xsd:import>
 </xsd:schema>
 </types>
+<message name="getResults">
+<part name="parameters" element="tns:getResults"></part>
+</message>
+<message name="getResultsResponse">
+<part name="parameters" element="tns:getResultsResponse"></part>
+</message>
 <message name="ping">
 <part name="parameters" element="tns:ping"></part>
 </message>
@@ -32,6 +38,10 @@
 <part name="parameters" element="tns:startScenario"></part>
 </message>
 <portType name="ConsumerWebService">
+<operation name="getResults">
+<input message="tns:getResults"></input>
+<output message="tns:getResultsResponse"></output>
+</operation>
 <operation name="ping">
 <input message="tns:ping"></input>
 <output message="tns:pingResponse"></output>
@@ -54,6 +64,15 @@
 </portType>
 <binding name="ConsumerWebServicePortBinding" type="tns:ConsumerWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
+<operation name="getResults">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
 <operation name="ping">
 <soap:operation soapAction=""></soap:operation>
 <input>

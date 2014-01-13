@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates 
  * and open the template in the editor.
  */
-
 package launcherproject;
 
 import java.net.MalformedURLException;
@@ -13,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
+import launcherproject.results.ResultsSingletonFactory;
 import launcherproject.xml.PhaseConsumer;
 
 /**
@@ -23,10 +23,10 @@ public class ConsumerClient extends ESBWSClient {
 
     private static final Logger logger = Logger.getLogger("Launcher");
 
-        protected URL getURL() {
+    protected URL getURL() {
 
         URL url = null;
-        URL baseUrl; 
+        URL baseUrl;
         baseUrl = beta.ConsumerWebServiceService.class.getResource(".");
         try {
             url = new URL(baseUrl, mWSDL);
@@ -36,16 +36,15 @@ public class ConsumerClient extends ESBWSClient {
 
         return url;
     }
-        
-
     private int mIdConsumerWS;
     private List<PhaseConsumer> mPhaseList;
-
     private static QName mQName = new QName("http://beta/", "ConsumerWebServiceService");
 
     private QName getQName() {
         return mQName;
-    };
+    }
+
+    ;
 
     public ConsumerClient(int id, String wsdl) {
         mIdConsumerWS = id;
@@ -54,27 +53,29 @@ public class ConsumerClient extends ESBWSClient {
     }
 
     public void addPhase(
-        String mIdProviderWS,
-        int mId,
-        int mTrafficProfile,
-        int mTargetedProviderConf,
-        int mNbRequests,
-        int mPeriod,
-        int mSize,
-        long mStartTimeStamp,
-        int mNbRepeat) {
+            String mIdProvider,
+            String mIdProviderWsdl,
+            int mId,
+            int mTrafficProfile,
+            int mTargetedProviderConf,
+            int mNbRequests,
+            int mPeriod,
+            int mSize,
+            long mStartTimeStamp,
+            int mNbRepeat) {
 
         mPhaseList.add(
                 new PhaseConsumer(
-                    mIdProviderWS,
-                    mTrafficProfile,
-                    mNbRequests,
-                    mPeriod,
-                    mSize,
-                    mStartTimeStamp,
-                    mNbRepeat,
-                    mTargetedProviderConf,
-                    mId));
+                mIdProviderWsdl,
+                mIdProvider,
+                mTrafficProfile,
+                mNbRequests,
+                mPeriod,
+                mSize,
+                mStartTimeStamp,
+                mNbRepeat,
+                mTargetedProviderConf,
+                mId));
     }
 
     private void callAddPhase(PhaseConsumer aPhase) {
@@ -84,24 +85,25 @@ public class ConsumerClient extends ESBWSClient {
         try { // Call Web Service Operation
             beta.ConsumerWebServiceService service = new beta.ConsumerWebServiceService(getURL(), getQName());
             beta.ConsumerWebService port = service.getConsumerWebServicePort();
-            System.err.println(aPhase.getProviderId());
+            logger.info("[phase information]" + aPhase.toString());
 
             Date date = new Date();
             long time = date.getTime();
             time = time + 1000 * aPhase.getStartDate();
 
             port.configurePhase(
-                    aPhase.getProviderId(),
+                    Integer.parseInt(aPhase.getProviderId()),
+                    aPhase.getProviderWsdl(),
                     aPhase.getId(),
                     aPhase.getTargetedProviderConf(),
                     aPhase.getNumberOfRequests(),
                     aPhase.getSendPeriod(),
                     aPhase.getPacketSize(),
                     aPhase.getNumberOfBursts(),
-                    time
-                    );
+                    time);
         } catch (Exception ex) {
-            logger.log(Level.INFO, "callAddPhase : " + ex.getMessage());
+            System.err.println(ex);
+            logger.log(Level.SEVERE, "callAddPhase : " + ex.getMessage());
         }
 
         logger.log(Level.INFO, "callAddPhase : complete");
@@ -158,6 +160,25 @@ public class ConsumerClient extends ESBWSClient {
         return 0;
     }
 
+    /**
+     * Results are fetched and added to the results singleton
+     * @param isFirst
+     * @return results fetched
+     */
+    public String callGetResults(boolean isFirst){
+        beta.ConsumerWebServiceService service = new beta.ConsumerWebServiceService();
+        beta.ConsumerWebService port = service.getConsumerWebServicePort();
+
+        String results = port.getResults(isFirst);
+
+        if (!results.isEmpty())
+            ResultsSingletonFactory.getInstance().addResults(results);
+
+        return results;
+
+    }
+
+
     public int start() {
         return callStart();
     }
@@ -166,7 +187,7 @@ public class ConsumerClient extends ESBWSClient {
 
         callStartConf();
 
-        for(PhaseConsumer iPhase : mPhaseList) {
+        for (PhaseConsumer iPhase : mPhaseList) {
             callAddPhase(iPhase);
         }
 

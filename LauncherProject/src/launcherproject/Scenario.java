@@ -68,6 +68,7 @@ public class Scenario {
             int nbPhase = 1;
             for (PhaseConsumer phase : consumerXML.getListPhases()) {
                 consumer.addPhase(
+                        phase.getProviderId(),
                         getActorWSDL(scenario, phase.getProviderId()),
                         nbPhase,
                         TrafficClass.trafficClassToInt(phase.getTrafficClass()),

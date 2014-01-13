@@ -80,7 +80,7 @@ public class PhaseLauncher implements Runnable{
             
             providerpckg.ProviderWS port = service.getProviderWSPort();
             // TODO initialize WS operation arguments here
-            String messageId = "ConsumerID:"+ConsumerWebService.CONSUMER_ID + "-MessageID:" +ConsumerWebService.messageNumber.get();
+            String messageId = "ProviderID:"+ thePhase.getRecepientID()+"ConsumerID:"+ConsumerWebService.CONSUMER_ID + "-MessageID:" +ConsumerWebService.messageNumber.get();
             ConsumerWebService.messageNumber.incrementAndGet();
             // TODO process result here
             ConsumerWebService.log.debug("Request message id "+messageId+" about to be sent");

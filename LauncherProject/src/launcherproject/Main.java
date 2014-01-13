@@ -8,6 +8,7 @@ package launcherproject;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import launcherproject.results.ResultsSingletonFactory;
 
 /**
  *
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
 public class Main {
 
     private static final Logger logger = Logger.getLogger("Launcher");
-    private static final String FILE_PATH = "/home/marc/NetBeansProjects/esb-benchmark-tool/scenario.xml";
+    private static final String FILE_PATH = "/home/marc/NetBeansProjects/esb-benchmark-tool/scenarioMarc.xml";
 
     /**
      * @param args the command line arguments
@@ -49,10 +50,45 @@ public class Main {
         }
 
         // Start all Consumers
-        for (ConsumerClient iProvider : scenario.getConsumerList()) {
-            iProvider.callStart();
+        for (ConsumerClient iConsumer : scenario.getConsumerList()) {
+            iConsumer.callStart();
         }
         logger.log(Level.INFO, "Launcher : complete");
+
+        logger.log(Level.INFO, "Waiting for the end of the simulation");
+        try {
+            Thread.sleep(2 * 60 * 1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        logger.log(Level.INFO, "Simulation ended");
+
+        logger.log(Level.INFO, "fetching results of each provider and consumer");
+
+               // Start all Providers
+        for (ProviderClient iProvider : scenario.getProviderList()) {
+            String results = iProvider.callGetResults(true);
+
+            while (!results.isEmpty()){
+                results = iProvider.callGetResults(false);
+            }
+        }
+
+        // Start all Consumers
+        for (ConsumerClient iConsumer : scenario.getConsumerList()) {
+            String results = iConsumer.callGetResults(true);
+
+            while (!results.isEmpty()){
+                results = iConsumer.callGetResults(false);
+            }
+        }
+
+        logger.log(Level.INFO, "Done fetching results of each provider and consumer");
+
+        logger.log(Level.INFO, "Writing to file results of each provider and consumer");
+        ResultsSingletonFactory.getInstance().writeResultsToFile();
+
+
     }
 
 }
