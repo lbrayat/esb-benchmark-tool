@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--
     Document   : insa.xml
     Created on : 9 décembre 2013, 12:46
@@ -10,11 +10,11 @@
     <configuration>
         <actor identifier="1">
             <type>consumer</type>
-            <address>http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl</address>
+            <address>http://localhost:9080/CompositeApplication/consumerPort?wsdl</address>
         </actor>
         <actor identifier="51">
             <type>provider</type>
-            <address>http://localhost:8080/ProviderProject/ProviderWSService?wsdl</address>
+            <address>http://localhost:9080/CompositeApplication/providerPort?wsdl</address>
         </actor>
     </configuration>
     <consumers>
@@ -33,7 +33,7 @@
                     <providerId>51</providerId>
 		    <targetedProviderConf>1</targetedProviderConf>
                     <trafficClass>RT</trafficClass>
-                    <numberOfRequests>200</numberOfRequests>
+                    <numberOfRequests>2000</numberOfRequests>
                     <sendPeriod>10</sendPeriod>
                     <packetSize>3</packetSize>
                     <startDate>30</startDate>

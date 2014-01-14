@@ -33,7 +33,7 @@
                     <providerId>51</providerId>
 		    <targetedProviderConf>1</targetedProviderConf>
                     <trafficClass>RT</trafficClass>
-                    <numberOfRequests>200</numberOfRequests>
+                    <numberOfRequests>2000</numberOfRequests>
                     <sendPeriod>10</sendPeriod>
                     <packetSize>3</packetSize>
                     <startDate>30</startDate>

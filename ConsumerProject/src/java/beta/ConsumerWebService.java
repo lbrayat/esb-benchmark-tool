@@ -151,8 +151,8 @@ public class ConsumerWebService {
 
             for (Thread t1 : threadsList){
                     try {
-                        log.debug("A thread has joined");
-                        t1.join();
+                        t1.join(0);
+                        log.debug("A thread has joined and is now finished");
                     } catch (InterruptedException ex) {
                         log.fatal(ConsumerWebService.class.getName());
                     }
