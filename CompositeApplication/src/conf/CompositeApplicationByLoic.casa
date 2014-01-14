@@ -9,16 +9,6 @@
     <service-units>
         <binding-component-service-unit artifacts-zip="sun-http-binding.jar" component-name="sun-http-binding" description="Represents this Service Unit" name="CompositeApplicationByLoic-sun-http-binding" unit-name="sun-http-binding">
             <ports>
-                <port bindingType="soap" x="67" y="117">
-                    <link xlink:href="../jbiasa/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/service[@name='ProviderWSService']/port[@name='ProviderWSPort'])" xlink:type="simple"/>
-                    <consumes endpoint="endpoint3"/>
-                    <provides endpoint="endpoint3"/>
-                </port>
-                <port bindingType="soap" x="67" y="344">
-                    <link xlink:href="../jbiasa/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/service[@name='ConsumerWebServiceService']/port[@name='ConsumerWebServicePort'])" xlink:type="simple"/>
-                    <consumes endpoint="endpoint1"/>
-                    <provides endpoint="endpoint1"/>
-                </port>
                 <port bindingType="soap" x="67" y="246">
                     <link xlink:href="../jbiasa/CompositeApplicationByLoic.wsdl#xpointer(/definitions/service[@name='CompositeApplicationByLoicService1']/port[@name='consumerPort'])" xlink:type="simple"/>
                     <consumes endpoint="endpoint2"/>
@@ -30,6 +20,16 @@
                     <consumes endpoint="endpoint4"/>
                     <provides endpoint="endpoint4"/>
                 </port>
+                <port bindingType="soap" x="67" y="344">
+                    <link xlink:href="../jbiasa/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/service[@name='ConsumerWebServiceService']/port[@name='ConsumerWebServicePort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint1"/>
+                    <provides endpoint="endpoint1"/>
+                </port>
+                <port bindingType="soap" x="67" y="117">
+                    <link xlink:href="../jbiasa/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/service[@name='ProviderWSService']/port[@name='ProviderWSPort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint3"/>
+                    <provides endpoint="endpoint3"/>
+                </port>
             </ports>
         </binding-component-service-unit>
     </service-units>
@@ -38,32 +38,32 @@
         <connection consumer="endpoint4" provider="endpoint3" state="new"/>
     </connections>
     <porttypes>
-        <link xlink:href="../jbiasa/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/portType[@name='ProviderWS'])" xlink:type="simple"/>
-        <link xlink:href="../jbiasa/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/portType[@name='ConsumerWebService'])" xlink:type="simple"/>
         <link xlink:href="../jbiasa/CompositeApplicationByLoic.wsdl#xpointer(/definitions/portType[@name='dummyCasaPortType'])" xlink:type="simple"/>
-        <link xlink:href="../jbiServiceUnits/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/portType[@name='ProviderWS'])" xlink:type="simple"/>
-        <link xlink:href="../jbiServiceUnits/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/portType[@name='ConsumerWebService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiasa/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/portType[@name='ConsumerWebService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiasa/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/portType[@name='ProviderWS'])" xlink:type="simple"/>
         <link xlink:href="../jbiServiceUnits/CompositeApplicationByLoic.wsdl#xpointer(/definitions/portType[@name='dummyCasaPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/portType[@name='ConsumerWebService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/portType[@name='ProviderWS'])" xlink:type="simple"/>
     </porttypes>
     <bindings>
-        <link xlink:href="../jbiasa/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/binding[@name='ProviderWSPortBinding'])" xlink:type="simple"/>
-        <link xlink:href="../jbiasa/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/binding[@name='ConsumerWebServicePortBinding'])" xlink:type="simple"/>
         <link xlink:href="../jbiasa/CompositeApplicationByLoic.wsdl#xpointer(/definitions/binding[@name='casaBinding1'])" xlink:type="simple"/>
         <link xlink:href="../jbiasa/CompositeApplicationByLoic.wsdl#xpointer(/definitions/binding[@name='casaBinding2'])" xlink:type="simple"/>
-        <link xlink:href="../jbiServiceUnits/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/binding[@name='ProviderWSPortBinding'])" xlink:type="simple"/>
-        <link xlink:href="../jbiServiceUnits/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/binding[@name='ConsumerWebServicePortBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiasa/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/binding[@name='ConsumerWebServicePortBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiasa/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/binding[@name='ProviderWSPortBinding'])" xlink:type="simple"/>
         <link xlink:href="../jbiServiceUnits/CompositeApplicationByLoic.wsdl#xpointer(/definitions/binding[@name='casaBinding1'])" xlink:type="simple"/>
         <link xlink:href="../jbiServiceUnits/CompositeApplicationByLoic.wsdl#xpointer(/definitions/binding[@name='casaBinding2'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/binding[@name='ConsumerWebServicePortBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/binding[@name='ProviderWSPortBinding'])" xlink:type="simple"/>
     </bindings>
     <services>
-        <link xlink:href="../jbiasa/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/service[@name='ProviderWSService'])" xlink:type="simple"/>
-        <link xlink:href="../jbiasa/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/service[@name='ConsumerWebServiceService'])" xlink:type="simple"/>
         <link xlink:href="../jbiasa/CompositeApplicationByLoic.wsdl#xpointer(/definitions/service[@name='CompositeApplicationByLoicService1'])" xlink:type="simple"/>
         <link xlink:href="../jbiasa/CompositeApplicationByLoic.wsdl#xpointer(/definitions/service[@name='CompositeApplicationByLoicService2'])" xlink:type="simple"/>
-        <link xlink:href="../jbiServiceUnits/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/service[@name='ProviderWSService'])" xlink:type="simple"/>
-        <link xlink:href="../jbiServiceUnits/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/service[@name='ConsumerWebServiceService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiasa/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/service[@name='ConsumerWebServiceService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiasa/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/service[@name='ProviderWSService'])" xlink:type="simple"/>
         <link xlink:href="../jbiServiceUnits/CompositeApplicationByLoic.wsdl#xpointer(/definitions/service[@name='CompositeApplicationByLoicService1'])" xlink:type="simple"/>
         <link xlink:href="../jbiServiceUnits/CompositeApplicationByLoic.wsdl#xpointer(/definitions/service[@name='CompositeApplicationByLoicService2'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl#xpointer(/definitions/service[@name='ConsumerWebServiceService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/localhost_8080/ProviderProject/ProviderWSService.wsdl#xpointer(/definitions/service[@name='ProviderWSService'])" xlink:type="simple"/>
     </services>
     <regions>
         <region name="WSDL Endpoints" width="150"/>

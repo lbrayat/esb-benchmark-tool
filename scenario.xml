@@ -22,38 +22,38 @@
     <consumers>
         <consumer identifier="1">
                 <phaseConsumer>
-                    <providerId>2</providerId>
-		    <targetedProviderConf>1</targetedProviderConf>
+                    <providerId>51</providerId>
+		    <targetedProviderConf>2</targetedProviderConf>
                     <trafficClass>BE</trafficClass>
-                    <numberOfRequests>100</numberOfRequests>
-                    <sendPeriod>2</sendPeriod>
-                    <packetSize>1024</packetSize>
-                    <startDate>0</startDate>
-                    <numberOfBursts>10</numberOfBursts>
+                    <numberOfRequests>2</numberOfRequests>
+                    <sendPeriod>10</sendPeriod>
+                    <packetSize>2</packetSize>
+                    <startDate>10</startDate>
+                    <numberOfBursts>1</numberOfBursts>
                 </phaseConsumer>
                 <phaseConsumer>
-                    <providerId>2</providerId>
+                    <providerId>51</providerId>
 		    <targetedProviderConf>1</targetedProviderConf>
                     <trafficClass>RT</trafficClass>
-                    <numberOfRequests>50</numberOfRequests>
+                    <numberOfRequests>2</numberOfRequests>
                     <sendPeriod>10</sendPeriod>
-                    <packetSize>1024</packetSize>
-                    <startDate>1000</startDate>
-                    <numberOfBursts>5</numberOfBursts>
+                    <packetSize>3</packetSize>
+                    <startDate>30</startDate>
+                    <numberOfBursts>1</numberOfBursts>
                 </phaseConsumer>
         </consumer>
     </consumers>
     <providers>
-        <provider identifier="2">
-            <phaseProvider id="0">
-                <processingTime>10</processingTime>
-                <packetSize>1024</packetSize>
+        <provider identifier="51">
+            <phaseProvider id="1">
+                <processingTime>60</processingTime>
+                <packetSize>5</packetSize>
                 <percentageLoss>0</percentageLoss>
             </phaseProvider>
             
-            <phaseProvider id="1">
+            <phaseProvider id="2">
                 <processingTime>2</processingTime>
-                <packetSize>1024</packetSize>
+                <packetSize>10</packetSize>
                 <percentageLoss>0</percentageLoss>
             </phaseProvider>
         </provider>
