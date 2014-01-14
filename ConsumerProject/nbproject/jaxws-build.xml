@@ -42,5 +42,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/providerpckg"/>
         <delete dir="${build.generated.dir}/jax-wsCache/ProviderWSService"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-ProviderWSService"/>
+    <target name="wsimport-client-FinishLineWSService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/FinishLineWSService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/FinishLineWSService" destdir="${build.generated.dir}/jax-wsCache/FinishLineWSService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/FinishLineWSService/wsdl/localhost_8080/LauncherWebApplication/FinishLineWSService.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/LauncherWebApplication/FinishLineWSService?WSDL" xnocompile="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/FinishLineWSService/wsdl/localhost_8080/LauncherWebApplication/FinishLineWSService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/FinishLineWSService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/FinishLineWSService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-FinishLineWSService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/launcherproject/webservice"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/FinishLineWSService"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-ProviderWSService, wsimport-client-FinishLineWSService"/>
 </project>

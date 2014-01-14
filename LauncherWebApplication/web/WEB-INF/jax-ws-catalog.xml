@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/ConsumerProject/ConsumerWebServiceService?wsdl" uri="wsdl/localhost_8080/ConsumerProject/ConsumerWebServiceService.wsdl"/>
+    <system systemId="http://localhost:8080/ConsumerProject/ConsumerWebServiceService?xsd=1" uri="wsdl/localhost_8080/ConsumerProject/ConsumerWebServiceService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ProviderProject/ProviderWSService?wsdl" uri="wsdl/localhost_8080/ProviderProject/ProviderWSService.wsdl"/>
+    <system systemId="http://localhost:8080/ProviderProject/ProviderWSService?xsd=1" uri="wsdl/localhost_8080/ProviderProject/ProviderWSService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/LauncherWebApplication/FinishLineWSService?WSDL" uri="wsdl/localhost_8080/LauncherWebApplication/FinishLineWSService.wsdl"/>
+    <system systemId="http://localhost:8080/LauncherWebApplication/FinishLineWSService?xsd=1" uri="wsdl/localhost_8080/LauncherWebApplication/FinishLineWSService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/LauncherWebApplication/FinishLineWSService?wsdl" uri="wsdl/localhost_8080/LauncherWebApplication/FinishLineWSService.wsdl"/>
+</catalog>
+
+
+
+
+
+
+

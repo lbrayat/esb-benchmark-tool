@@ -4,7 +4,10 @@
     <system systemId="http://localhost:8080/ProviderProject/ProviderWSService?xsd=1" uri="wsdl/localhost_8080/ProviderProject/ProviderWSService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/ProviderProjectWithConf/ProviderWSService?wsdl" uri="wsdl/localhost_8080/ProviderProjectWithConf/ProviderWSService.wsdl"/>
     <system systemId="http://localhost:8080/ProviderProjectWithConf/ProviderWSService?xsd=1" uri="wsdl/localhost_8080/ProviderProjectWithConf/ProviderWSService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/LauncherWebApplication/FinishLineWSService?WSDL" uri="wsdl/localhost_8080/LauncherWebApplication/FinishLineWSService.wsdl"/>
+    <system systemId="http://localhost:8080/LauncherWebApplication/FinishLineWSService?xsd=1" uri="wsdl/localhost_8080/LauncherWebApplication/FinishLineWSService.xsd_1.xsd"/>
 </catalog>
+
 
 
 

@@ -18,6 +18,8 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.namespace.QName;
 import javax.xml.ws.WebServiceRef;
+import launcherproject.webservice.FinishLineWSService;
+import messaging.MessageSender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import pojos.Phase;
@@ -31,6 +33,8 @@ import providerpckg.ProviderWSService;
  */
 @WebService()
 public class ConsumerWebService {
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/LauncherWebApplication/FinishLineWSService.wsdl")
+    private FinishLineWSService service_1;
 
     public static final int CONSUMER_ID = 1;
     public static AtomicInteger messageNumber;
@@ -184,13 +188,28 @@ public class ConsumerWebService {
     }
 
     private void onFinish(){
-        
+
+        // print the logs for debug purposes
         String nextLog= LogResultListSingletonFactory.getInstance().getFirstLog();
         log.debug(nextLog);
         while (!nextLog.equalsIgnoreCase("")){
             nextLog=LogResultListSingletonFactory.getInstance().getNextLog();
             log.debug(nextLog);
         }
+
+        // tel the launcher we are done by call its web operation
+        try { // Call Web Service Operation
+            launcherproject.webservice.FinishLineWS port = service_1.getFinishLineWSPort();
+            // TODO initialize WS operation arguments here
+            java.lang.String consumerName = "";
+            // TODO process result here
+            int result = port.imDone("Consumer : " + ConsumerWebService.CONSUMER_ID);
+            System.out.println("Result = "+result);
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        }
+
+
     }
 
     /**
