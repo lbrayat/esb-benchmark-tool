@@ -48,7 +48,7 @@ public class LogResultList {
                     + ";" + String.valueOf(idConf)
                     + ";" + payload
                     + ";" + timestamp
-                    + ";" + inoutType;
+                    + ";" + inoutType+ ";" ;
         }
 
     }
