@@ -44,27 +44,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndConfigurationResponse }
+     * Create an instance of {@link GetResults }
      * 
      */
-    public EndConfigurationResponse createEndConfigurationResponse() {
-        return new EndConfigurationResponse();
-    }
-
-    /**
-     * Create an instance of {@link ConfigurePhase }
-     * 
-     */
-    public ConfigurePhase createConfigurePhase() {
-        return new ConfigurePhase();
-    }
-
-    /**
-     * Create an instance of {@link StartConfigurationResponse }
-     * 
-     */
-    public StartConfigurationResponse createStartConfigurationResponse() {
-        return new StartConfigurationResponse();
+    public GetResults createGetResults() {
+        return new GetResults();
     }
 
     /**
@@ -76,19 +60,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StartConfiguration }
+     * Create an instance of {@link ConfigurePhase }
      * 
      */
-    public StartConfiguration createStartConfiguration() {
-        return new StartConfiguration();
-    }
-
-    /**
-     * Create an instance of {@link GetResults }
-     * 
-     */
-    public GetResults createGetResults() {
-        return new GetResults();
+    public ConfigurePhase createConfigurePhase() {
+        return new ConfigurePhase();
     }
 
     /**
@@ -116,11 +92,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetResultsResponse }
+     * Create an instance of {@link EndConfigurationResponse }
      * 
      */
-    public GetResultsResponse createGetResultsResponse() {
-        return new GetResultsResponse();
+    public EndConfigurationResponse createEndConfigurationResponse() {
+        return new EndConfigurationResponse();
     }
 
     /**
@@ -129,6 +105,30 @@ public class ObjectFactory {
      */
     public ConfigurePhaseResponse createConfigurePhaseResponse() {
         return new ConfigurePhaseResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetResultsResponse }
+     * 
+     */
+    public GetResultsResponse createGetResultsResponse() {
+        return new GetResultsResponse();
+    }
+
+    /**
+     * Create an instance of {@link StartConfiguration }
+     * 
+     */
+    public StartConfiguration createStartConfiguration() {
+        return new StartConfiguration();
+    }
+
+    /**
+     * Create an instance of {@link StartConfigurationResponse }
+     * 
+     */
+    public StartConfigurationResponse createStartConfigurationResponse() {
+        return new StartConfigurationResponse();
     }
 
     /**

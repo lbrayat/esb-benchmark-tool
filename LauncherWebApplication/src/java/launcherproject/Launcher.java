@@ -19,7 +19,7 @@ public class Launcher {
 
     private static String inputFilePath;
     private static final Logger logger = Logger.getLogger("EBTLauncher");
-    private static String SCHEMA_PATH = "/home/marc/NetBeansProjects/LauncherWebApplication/src/java/launcherproject/scenario.xsd";
+    private static String SCHEMA_PATH = "schemas/scenario.xsd";
     private Scenario scenario;
 
     public Launcher (String filePath) {

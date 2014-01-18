@@ -61,7 +61,7 @@ public class FinishLineWS {
     public String reset() {
         
         consumerCount = new AtomicInteger(0);
-        return null;
+        return "reset ok !";
 
     }
 
