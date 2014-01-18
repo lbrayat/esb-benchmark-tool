@@ -44,14 +44,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StartConfigurationResponse }
-     * 
-     */
-    public StartConfigurationResponse createStartConfigurationResponse() {
-        return new StartConfigurationResponse();
-    }
-
-    /**
      * Create an instance of {@link PingResponse }
      * 
      */
@@ -60,27 +52,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndConfigurationResponse }
-     * 
-     */
-    public EndConfigurationResponse createEndConfigurationResponse() {
-        return new EndConfigurationResponse();
-    }
-
-    /**
      * Create an instance of {@link GetResultsResponse }
      * 
      */
     public GetResultsResponse createGetResultsResponse() {
         return new GetResultsResponse();
-    }
-
-    /**
-     * Create an instance of {@link StartScenario }
-     * 
-     */
-    public StartScenario createStartScenario() {
-        return new StartScenario();
     }
 
     /**
@@ -100,11 +76,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetResults }
+     * Create an instance of {@link Ping }
      * 
      */
-    public GetResults createGetResults() {
-        return new GetResults();
+    public Ping createPing() {
+        return new Ping();
     }
 
     /**
@@ -116,19 +92,43 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetResults }
+     * 
+     */
+    public GetResults createGetResults() {
+        return new GetResults();
+    }
+
+    /**
+     * Create an instance of {@link StartConfigurationResponse }
+     * 
+     */
+    public StartConfigurationResponse createStartConfigurationResponse() {
+        return new StartConfigurationResponse();
+    }
+
+    /**
+     * Create an instance of {@link EndConfigurationResponse }
+     * 
+     */
+    public EndConfigurationResponse createEndConfigurationResponse() {
+        return new EndConfigurationResponse();
+    }
+
+    /**
+     * Create an instance of {@link StartScenario }
+     * 
+     */
+    public StartScenario createStartScenario() {
+        return new StartScenario();
+    }
+
+    /**
      * Create an instance of {@link ConfigurePhase }
      * 
      */
     public ConfigurePhase createConfigurePhase() {
         return new ConfigurePhase();
-    }
-
-    /**
-     * Create an instance of {@link Ping }
-     * 
-     */
-    public Ping createPing() {
-        return new Ping();
     }
 
     /**

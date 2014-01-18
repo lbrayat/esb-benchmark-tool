@@ -48,7 +48,6 @@ public interface ProviderWS {
 
     /**
      * 
-     * @param isFirst
      * @return
      *     returns java.lang.String
      */
@@ -56,9 +55,7 @@ public interface ProviderWS {
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "getResults", targetNamespace = "http://providerPckg/", className = "providerpckg.GetResults")
     @ResponseWrapper(localName = "getResultsResponse", targetNamespace = "http://providerPckg/", className = "providerpckg.GetResultsResponse")
-    public String getResults(
-        @WebParam(name = "isFirst", targetNamespace = "")
-        boolean isFirst);
+    public String getResults();
 
     /**
      * 

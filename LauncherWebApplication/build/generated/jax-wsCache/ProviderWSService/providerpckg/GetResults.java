@@ -16,7 +16,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="isFirst" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,27 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getResults", propOrder = {
-    "isFirst"
-})
+@XmlType(name = "getResults")
 public class GetResults {
 
-    protected boolean isFirst;
-
-    /**
-     * Gets the value of the isFirst property.
-     * 
-     */
-    public boolean isIsFirst() {
-        return isFirst;
-    }
-
-    /**
-     * Sets the value of the isFirst property.
-     * 
-     */
-    public void setIsFirst(boolean value) {
-        this.isFirst = value;
-    }
 
 }

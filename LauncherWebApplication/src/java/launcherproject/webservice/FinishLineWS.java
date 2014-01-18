@@ -97,7 +97,7 @@ public class FinishLineWS {
     }
 
     /**
-     * simu -i /home/marc/NetBeansProjects/esb-benchmark-tool/scenarioMarc.xml -o /home/marc/zejknfzlenf.xml
+     * simu -i /home/marc/NetBeansProjects/esb-benchmark-tool/scenario/scenarioMarc.xml -o /home/marc/zejknfzlenf.xml
      * Web service operation
      */
     @WebMethod(operationName = "reset")
