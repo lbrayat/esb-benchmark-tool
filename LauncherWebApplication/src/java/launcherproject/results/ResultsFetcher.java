@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import launcherproject.ConsumerClient;
+import launcherproject.MainCLI;
 import launcherproject.ProviderClient;
+import launcherproject.webservice.FinishLineWS;
 
 /**
  *
@@ -45,7 +47,8 @@ public class ResultsFetcher{
 
 
             if (numberOfConsumerDone == consumerList.size()){
-
+                
+                // now fetch the results (Ernesto est mon modèle)
                 logger.log(Level.INFO, "fetching results of each provider and consumer");
 
                        // Start all Providers
@@ -68,7 +71,7 @@ public class ResultsFetcher{
 
                 logger.log(Level.INFO, "Done fetching results of each provider and consumer");
 
-                logger.log(Level.INFO, "Writing to file results of each provider and consumer");
+                logger.log(Level.INFO, "Writing to file results of each provider and consumer ");
                 ResultsSingletonFactory.getInstance().writeResultsToFile();
             }
         }

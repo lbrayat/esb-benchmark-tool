@@ -2,8 +2,8 @@
 <jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:ns1="CompositeApplication" xmlns:ns2="http://providerPckg/" xmlns:ns3="http://beta/" version="1.0">
     <services binding-component="true">
         <provides endpoint-name="ProviderWSPort" interface-name="ns2:ProviderWS" service-name="ns2:ProviderWSService"/>
-        <provides endpoint-name="ConsumerWebServiceIn" interface-name="ns3:ConsumerWebService" service-name="ns3:ConsumerWebServiceService"/>
-        <consumes endpoint-name="ProviderPortOut" interface-name="ns2:ProviderWS" service-name="ns1:CompositeApplicationService2"/>
-        <consumes endpoint-name="ConsumerPortOut" interface-name="ns3:ConsumerWebService" service-name="ns1:CompositeApplicationService1"/>
+        <provides endpoint-name="ConsumerWebServicePort" interface-name="ns3:ConsumerWebService" service-name="ns3:ConsumerWebServiceService"/>
+        <consumes endpoint-name="providerPort" interface-name="ns2:ProviderWS" service-name="ns1:CompositeApplicationService"/>
+        <consumes endpoint-name="consumerPort" interface-name="ns3:ConsumerWebService" service-name="ns1:CompositeApplicationService"/>
     </services>
 </jbi>

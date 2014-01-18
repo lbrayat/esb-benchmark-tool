@@ -1,0 +1,11 @@
+<soapenv:Envelope xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prov="http://providerPckg/">
+  <soapenv:Body>
+    <prov:operation>
+      <!--Optional:-->
+      <arg0>?string?</arg0>
+      <arg1>?3?</arg1>
+      <!--Optional:-->
+      <arg2>?string?</arg2>
+    </prov:operation>
+  </soapenv:Body>
+</soapenv:Envelope>

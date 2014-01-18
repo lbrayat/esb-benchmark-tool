@@ -117,7 +117,7 @@
 </operation>
 </binding>
 <service name="ConsumerWebServiceService">
-<port name="ConsumerWebServiceIn" binding="tns:ConsumerWebServicePortBinding">
+<port name="ConsumerWebServicePort" binding="tns:ConsumerWebServicePortBinding">
 <soap:address location="http://localhost:8080/ConsumerProject/ConsumerWebServiceService"></soap:address>
 </port>
 </service>

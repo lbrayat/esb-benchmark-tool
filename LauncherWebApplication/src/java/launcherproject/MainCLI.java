@@ -16,6 +16,11 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import launcherproject.convertor.RawDataConvertor;
+import launcherproject.results.Results;
+import launcherproject.webservice.FinishLineWS;
 
 
 /**
@@ -25,6 +30,8 @@ import java.io.*;
 public class MainCLI {
 
     private static Launcher launcher;
+    private static final String tempFile = "/home/marc/SimuState.tmp";
+   
 
     /**
      * @param args the command line arguments
@@ -91,9 +98,50 @@ public class MainCLI {
                 launcher = new Launcher (inputFilePath);
                 launcher.runLauncher();
 
-                String results = "Resultats de la simulation";
-                launcher.writeOutputFile (results, cmd.getOptionValue("o"));
+                String xmlOutFile = cmd.getOptionValue("o");
+ 
+                // wait for the end of the simulation
+                System.out.println("Simulation running");
+                int i=0;
+                boolean done = false;
+                while (!done){
+                    if (i==10){
+                        System.out.println();
+                        i=0;
+                    }
+                        Thread.sleep(1000);
+                        System.out.print(done+" ");
+                        i++;
 
+                        BufferedReader bReader = new BufferedReader(new FileReader(tempFile));
+                        String line = bReader.readLine();
+                        if(line!=null && line.equalsIgnoreCase("done")){
+                            done = true;
+                            PrintWriter writer = new PrintWriter(tempFile);
+                            writer.print("");
+                            writer.close();
+                        }
+
+
+                }
+
+                // wait for the end of the simulation
+                System.out.println("Simulation is finished, writing results to file");
+                // writing csv and xml results
+                RawDataConvertor rdc = new RawDataConvertor();
+                try {
+                    rdc.load(Results.rawDataFilePath);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Results.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Results.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    Logger.getLogger(Results.class.getName()).log(Level.SEVERE, "xml file = "+xmlOutFile, "xml file = "+xmlOutFile);
+                    rdc.writeKPI(new File(xmlOutFile));
+                } catch (IOException ex) {
+                    Logger.getLogger(Results.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 } catch(MissingOptionException e){
                     // vérifie si l'option -h est présente

@@ -90,7 +90,9 @@
 </xs:complexType>
 
 <xs:complexType name="getResults">
-<xs:sequence></xs:sequence>
+<xs:sequence>
+<xs:element name="isFirst" type="xs:boolean"></xs:element>
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="getResultsResponse">
