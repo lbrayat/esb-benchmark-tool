@@ -31,7 +31,7 @@ import providerpckg.ProviderWSService;
  */
 @WebService()
 public class ConsumerWebService {
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/LauncherWebApplication/FinishLineWSService.wsdl")
+    @WebServiceRef(wsdlLocation = "http://localhost:8080/LauncherWebApplication/FinishLineWSService?WSDL")
     private FinishLineWSService service_1;
 
     public static final int CONSUMER_ID = 1;
@@ -203,7 +203,7 @@ public class ConsumerWebService {
             nextLog=LogResultListSingletonFactory.getInstance().getNextLog();
             log.debug(nextLog);
         }
-
+        log.debug("done for the logs");
         // tel the launcher we are done by calling its web operation
         try { // Call Web Service Operation
             launcherproject.webservice.FinishLineWS port = service_1.getFinishLineWSPort();

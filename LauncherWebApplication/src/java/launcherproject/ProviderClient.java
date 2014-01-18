@@ -139,6 +139,7 @@ public class ProviderClient extends ESBWSClient {
         providerpckg.ProviderWS port = service.getProviderWSPort();
         
         String results = port.getResults(isFirst);
+        
 
         if (!results.isEmpty())
             ResultsSingletonFactory.getInstance().addResults(results);

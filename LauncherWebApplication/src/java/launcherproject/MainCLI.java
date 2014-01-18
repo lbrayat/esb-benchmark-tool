@@ -93,9 +93,13 @@ public class MainCLI {
                 CommandLine cmd;
                 cmd = parser.parse(options, arguments);
                 String inputFilePath = cmd.getOptionValue("i");
+                PrintWriter writer = new PrintWriter(tempFile);
+                writer.print(inputFilePath);
+                writer.close();
+                System.out.println("wrote input file path to file = "+inputFilePath);
 
 
-                launcher = new Launcher (inputFilePath);
+                launcher = new Launcher(inputFilePath);
                 launcher.runLauncher();
 
                 String xmlOutFile = cmd.getOptionValue("o");
@@ -110,16 +114,13 @@ public class MainCLI {
                         i=0;
                     }
                         Thread.sleep(1000);
-                        System.out.print(done+" ");
+                        System.out.print(". ");
                         i++;
 
                         BufferedReader bReader = new BufferedReader(new FileReader(tempFile));
                         String line = bReader.readLine();
                         if(line!=null && line.equalsIgnoreCase("done")){
                             done = true;
-                            PrintWriter writer = new PrintWriter(tempFile);
-                            writer.print("");
-                            writer.close();
                         }
 
 

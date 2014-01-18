@@ -27,7 +27,7 @@ public class KpiCalculator {
      *    . average propagation time
      *    . min and max propagation time
      *    . average size of packets in every way
-     *    . total packet size 
+     *    . total packet size
      *    . standard deviation of the propagation time
      *    . average throughput
      * ------------------------------------------------

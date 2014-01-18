@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : insa.xml
+    Created on : 9 décembre 2013, 12:46
+    Author     : admin
+    Description:
+        Purpose of the document follows.
+-->
+<scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="scenario.xsd">
+    <configuration>
+        <actor identifier="1">
+            <type>consumer</type>
+            <address>http://localhost:9080/CompositeApplicationService/consumerPort?wsdl</address>
+        </actor>
+        <actor identifier="51">
+            <type>provider</type>
+            <address>http://localhost:9080/CompositeApplicationService/providerPort?wsdl</address>
+        </actor>
+    </configuration>
+    <consumers>
+        <consumer identifier="1">
+                <phaseConsumer>
+                    <providerId>51</providerId>
+					<targetedProviderConf>1</targetedProviderConf>
+                    <trafficClass>BE</trafficClass>
+                    <numberOfRequests>10</numberOfRequests>
+                    <sendPeriod>1</sendPeriod>
+                    <packetSize>100</packetSize>
+                    <startDate>1</startDate>
+                    <numberOfBursts>120</numberOfBursts>
+                </phaseConsumer>
+                <phaseConsumer>
+                    <providerId>51</providerId>
+		            <targetedProviderConf>1</targetedProviderConf>
+                    <trafficClass>RT</trafficClass>
+                    <numberOfRequests>10</numberOfRequests>
+                    <sendPeriod>1</sendPeriod>
+                    <packetSize>100</packetSize>
+                    <startDate>120</startDate>
+                    <numberOfBursts>120</numberOfBursts>
+                </phaseConsumer>
+        </consumer>
+    </consumers>
+    <providers>
+        <provider identifier="51">
+            <phaseProvider id="1">
+                <processingTime>1</processingTime>
+                <packetSize>1000</packetSize>
+                <percentageLoss>0</percentageLoss>
+            </phaseProvider> 
+            <phaseProvider id="2">
+                <processingTime>60</processingTime>
+                <packetSize>10</packetSize>
+                <percentageLoss>0</percentageLoss>
+            </phaseProvider>
+        </provider>
+    </providers>
+</scenario>

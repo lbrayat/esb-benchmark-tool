@@ -145,10 +145,12 @@ public class Launcher {
                 }
                 else {
                     System.out.println("Resources are not available, the scenario can not be simulated.");
+                    return;
                 }
             }
             else {
                 System.out.println("The XML file is not valid, the scenario can not be parsed.");
+                return;
             }
         }
         else {
