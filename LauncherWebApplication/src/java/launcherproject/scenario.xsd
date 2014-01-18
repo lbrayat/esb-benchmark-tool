@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="scenario">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="configuration"/>
+                <xs:element ref="consumers"/>
+                <xs:element ref="providers"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="configuration">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="actor" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+     <xs:element name="consumers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="consumer" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+     <xs:element name="providers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="provider" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="actor">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="type">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="consumer"/>
+                            <xs:enumeration value="provider"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                    </xs:element>
+                <xs:element name="address" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="identifier" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="consumer">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="phaseConsumer" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="identifier" type="xs:int" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="phaseConsumer">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="providerId" type="xs:string"/>
+		<xs:element name="targetedProviderConf" type="xs:int"/>
+                <xs:element name="trafficClass">
+		    <xs:simpleType>
+		        <xs:restriction base="xs:string">
+			    <xs:enumeration value="BE"/>
+			    <xs:enumeration value="RT"/>		
+		        </xs:restriction>
+		    </xs:simpleType>
+		</xs:element>
+                <xs:element name="numberOfRequests" type="xs:positiveInteger"/>
+                <xs:element name="sendPeriod" type="xs:positiveInteger"/>
+                <xs:element name="packetSize" type="xs:positiveInteger"/>
+                <xs:element name="startDate" type="xs:long"/>
+                <xs:element name="numberOfBursts" type="xs:positiveInteger"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="provider">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="phaseProvider" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="identifier" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="phaseProvider">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="processingTime" type="xs:positiveInteger"/>
+                <xs:element name="packetSize" type="xs:positiveInteger"/>
+                <xs:element name="percentageLoss" type="xs:int"/>
+            </xs:sequence>
+	    <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

@@ -4,6 +4,10 @@
 
 <xs:element name="imDoneResponse" type="tns:imDoneResponse"></xs:element>
 
+<xs:element name="reset" type="tns:reset"></xs:element>
+
+<xs:element name="resetResponse" type="tns:resetResponse"></xs:element>
+
 <xs:complexType name="imDone">
 <xs:sequence>
 <xs:element name="consumerName" type="xs:string" minOccurs="0"></xs:element>
@@ -13,6 +17,16 @@
 <xs:complexType name="imDoneResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="reset">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="resetResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"></xs:element>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

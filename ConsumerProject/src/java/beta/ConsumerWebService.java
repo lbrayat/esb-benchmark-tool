@@ -127,6 +127,15 @@ public class ConsumerWebService {
     @WebMethod(operationName = "endConfiguration")
     public void endConfiguration() {
 
+        try { // Call Web Service Operation
+            launcherproject.webservice.FinishLineWS port = service_1.getFinishLineWSPort();
+            log.debug("reset called");
+            java.lang.String result = port.reset();
+            System.out.println("Result = "+result);
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        }
+
     }
 
     /**
@@ -195,12 +204,10 @@ public class ConsumerWebService {
             log.debug(nextLog);
         }
 
-        // tel the launcher we are done by call its web operation
+        // tel the launcher we are done by calling its web operation
         try { // Call Web Service Operation
             launcherproject.webservice.FinishLineWS port = service_1.getFinishLineWSPort();
-            // TODO initialize WS operation arguments here
-            java.lang.String consumerName = "";
-            // TODO process result here
+
             int result = port.imDone("Consumer : " + ConsumerWebService.CONSUMER_ID);
             System.out.println("Result = "+result);
         } catch (Exception ex) {

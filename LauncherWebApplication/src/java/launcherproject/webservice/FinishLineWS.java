@@ -25,13 +25,14 @@ import launcherproject.results.ResultsFetcher;
 public class FinishLineWS {
 
     private AtomicInteger consumerCount;
-    private List<ProviderClient> providerList;
-    private List<ConsumerClient> consumerList;
+
 
     public FinishLineWS() {
         consumerCount = new AtomicInteger(0);
     }
 
+
+    
 
 
     /**
@@ -51,6 +52,17 @@ public class FinishLineWS {
 
         new ResultsFetcher(scenario.getProviderList(), scenario.getConsumerList()).fetch(consumerCount.get());
         return 0;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "reset")
+    public String reset() {
+        
+        consumerCount = new AtomicInteger(0);
+        return null;
+
     }
 
 

@@ -4,6 +4,12 @@
 <xsd:import namespace="http://webservice.launcherproject/" schemaLocation="http://localhost:8080/LauncherWebApplication/FinishLineWSService?xsd=1"></xsd:import>
 </xsd:schema>
 </types>
+<message name="reset">
+<part name="parameters" element="tns:reset"></part>
+</message>
+<message name="resetResponse">
+<part name="parameters" element="tns:resetResponse"></part>
+</message>
 <message name="imDone">
 <part name="parameters" element="tns:imDone"></part>
 </message>
@@ -11,6 +17,10 @@
 <part name="parameters" element="tns:imDoneResponse"></part>
 </message>
 <portType name="FinishLineWS">
+<operation name="reset">
+<input message="tns:reset"></input>
+<output message="tns:resetResponse"></output>
+</operation>
 <operation name="imDone">
 <input message="tns:imDone"></input>
 <output message="tns:imDoneResponse"></output>
@@ -18,6 +28,15 @@
 </portType>
 <binding name="FinishLineWSPortBinding" type="tns:FinishLineWS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
+<operation name="reset">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
 <operation name="imDone">
 <soap:operation soapAction=""></soap:operation>
 <input>

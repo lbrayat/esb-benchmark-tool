@@ -44,43 +44,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConfigurePhaseResponse }
+     * Create an instance of {@link EndConfigurationResponse }
      * 
      */
-    public ConfigurePhaseResponse createConfigurePhaseResponse() {
-        return new ConfigurePhaseResponse();
-    }
-
-    /**
-     * Create an instance of {@link StartConfigurationResponse }
-     * 
-     */
-    public StartConfigurationResponse createStartConfigurationResponse() {
-        return new StartConfigurationResponse();
-    }
-
-    /**
-     * Create an instance of {@link StartConfiguration }
-     * 
-     */
-    public StartConfiguration createStartConfiguration() {
-        return new StartConfiguration();
-    }
-
-    /**
-     * Create an instance of {@link GetResultsResponse }
-     * 
-     */
-    public GetResultsResponse createGetResultsResponse() {
-        return new GetResultsResponse();
-    }
-
-    /**
-     * Create an instance of {@link PingResponse }
-     * 
-     */
-    public PingResponse createPingResponse() {
-        return new PingResponse();
+    public EndConfigurationResponse createEndConfigurationResponse() {
+        return new EndConfigurationResponse();
     }
 
     /**
@@ -92,27 +60,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Ping }
+     * Create an instance of {@link StartConfigurationResponse }
      * 
      */
-    public Ping createPing() {
-        return new Ping();
+    public StartConfigurationResponse createStartConfigurationResponse() {
+        return new StartConfigurationResponse();
     }
 
     /**
-     * Create an instance of {@link EndConfigurationResponse }
+     * Create an instance of {@link EndConfiguration }
      * 
      */
-    public EndConfigurationResponse createEndConfigurationResponse() {
-        return new EndConfigurationResponse();
+    public EndConfiguration createEndConfiguration() {
+        return new EndConfiguration();
     }
 
     /**
-     * Create an instance of {@link StartScenario }
+     * Create an instance of {@link StartConfiguration }
      * 
      */
-    public StartScenario createStartScenario() {
-        return new StartScenario();
+    public StartConfiguration createStartConfiguration() {
+        return new StartConfiguration();
     }
 
     /**
@@ -124,11 +92,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EndConfiguration }
+     * Create an instance of {@link PingResponse }
      * 
      */
-    public EndConfiguration createEndConfiguration() {
-        return new EndConfiguration();
+    public PingResponse createPingResponse() {
+        return new PingResponse();
+    }
+
+    /**
+     * Create an instance of {@link Ping }
+     * 
+     */
+    public Ping createPing() {
+        return new Ping();
+    }
+
+    /**
+     * Create an instance of {@link StartScenario }
+     * 
+     */
+    public StartScenario createStartScenario() {
+        return new StartScenario();
+    }
+
+    /**
+     * Create an instance of {@link GetResultsResponse }
+     * 
+     */
+    public GetResultsResponse createGetResultsResponse() {
+        return new GetResultsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ConfigurePhaseResponse }
+     * 
+     */
+    public ConfigurePhaseResponse createConfigurePhaseResponse() {
+        return new ConfigurePhaseResponse();
     }
 
     /**
