@@ -33,13 +33,15 @@ public class LogResultList {
         String payload;
         long timestamp;
         int inoutType;
+        int consumerConfId;
 
-        public LogResult(String idMessage, int idConf, String payload, long timestamp, int input) {
+        public LogResult(String idMessage, int idConf, String payload, long timestamp, int input,  int consumerConfId) {
             this.idMessage = idMessage;
             this.idConf = idConf;
             this.payload = payload;
             this.timestamp = timestamp;
             this.inoutType = input;
+            this.consumerConfId = consumerConfId;
         }
 
         @Override
@@ -48,7 +50,8 @@ public class LogResultList {
                     + ";" + String.valueOf(idConf)
                     + ";" + payload
                     + ";" + timestamp
-                    + ";" + inoutType;
+                    + ";" + inoutType
+                    + ";" + consumerConfId;
         }
 
     }
@@ -57,9 +60,9 @@ public class LogResultList {
         list = new ArrayList<LogResult>();
     }
 
-    public synchronized void addLog(String idMessage, int idConf, String payload, long timestamp, int isInput) {
+    public synchronized void addLog(String idMessage, int idConf, String payload, long timestamp, int isInput, int consumerConfId) {
         
-        list.add(new LogResult(idMessage, idConf, payload, timestamp, isInput));
+        list.add(new LogResult(idMessage, idConf, payload, timestamp, isInput, consumerConfId));
         System.out.println("[Log Result List] a log is added, list size : "+list.size());
     }
 

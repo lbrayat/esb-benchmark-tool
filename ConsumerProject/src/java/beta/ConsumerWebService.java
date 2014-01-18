@@ -19,12 +19,10 @@ import javax.jws.WebService;
 import javax.xml.namespace.QName;
 import javax.xml.ws.WebServiceRef;
 import launcherproject.webservice.FinishLineWSService;
-import messaging.MessageSender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import pojos.Phase;
 import multithreading.PhaseLauncher;
-import pojos.LogResultList;
 import pojos.LogResultListSingletonFactory;
 import providerpckg.ProviderWSService;
 /**
@@ -95,7 +93,7 @@ public class ConsumerWebService {
         threadsList = new ArrayList<Thread>();
         messageNumber= new AtomicInteger(0);
         LogResultListSingletonFactory.resetInstance();
-        log.debug("Previous configurations deleted");
+        log.debug("Previous configurations deleted"); 
     }
 
     /**
@@ -118,7 +116,7 @@ public class ConsumerWebService {
         log.debug("timestamp long : "+startDate);
         startDateInCal.setTimeInMillis(startDate);
 
-        Phase newPhase = new Phase(providerID, recepientAddress, NumberOfrequests,
+        Phase newPhase = new Phase(phaseNumber, providerID, recepientAddress, NumberOfrequests,
                 sendingPeriod, payloadSize, repetitions, startDateInCal, targetedProviderConfiguration);
 
         phasesList.add(newPhase);

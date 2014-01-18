@@ -25,9 +25,11 @@ public class MessageSender implements Runnable{
     int payloadSize;
     int targetConf;
     String messageId;
+    int consumerPhaseId;
 
-    public MessageSender(ProviderWS port, int consumerId, int payloadSize, int targetConf, String messageId) {
+    public MessageSender(ProviderWS port, int consumerPhase, int consumerId, int payloadSize, int targetConf, String messageId) {
         this.port = port;
+        this.consumerPhaseId = consumerPhase;
         this.consumerId = consumerId;
         this.payloadSize = payloadSize;
         this.targetConf = targetConf;
@@ -44,9 +46,19 @@ public class MessageSender implements Runnable{
         // send operation in a different thread
         String result = null;
         try {
-            LogResultListSingletonFactory.getInstance().addLog(messageId, targetConf, payload, new GregorianCalendar().getTimeInMillis(), LogResultList.OUT_CONSUMER);
+            //log message information before sending it
+            LogResultListSingletonFactory.getInstance().addLog(messageId, targetConf,
+                    payload, new GregorianCalendar().getTimeInMillis(),
+                    LogResultList.OUT_CONSUMER, consumerPhaseId);
+
+            // send the request
             result = port.operation(messageId, targetConf, payload);
-            LogResultListSingletonFactory.getInstance().addLog(messageId, targetConf, result, new GregorianCalendar().getTimeInMillis(), LogResultList.IN_CONSUMER);
+
+            // log the response informations after receiving it
+            LogResultListSingletonFactory.getInstance().addLog(messageId, targetConf,
+                    result, new GregorianCalendar().getTimeInMillis(),
+                    LogResultList.IN_CONSUMER, consumerPhaseId);
+            
         } catch (InterruptedException_Exception ex) {
             Logger.getLogger(MessageSender.class.getName()).log(Level.SEVERE, null, ex);
         } 
