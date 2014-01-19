@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.net.*;
 import javax.jws.WebParam;
+import javax.xml.bind.ValidationException;
 
 /**
  *
@@ -130,7 +131,7 @@ public class Launcher {
         return valid;
     }
 
-    public void runLauncher () {
+    public void runLauncher () throws ValidationException, FileNotFoundException, UnknownHostException {
 
         File xmlFile = new File(getInputFilePath());
 
@@ -145,16 +146,18 @@ public class Launcher {
                 }
                 else {
                     System.out.println("Resources are not available, the scenario can not be simulated.");
-                    return;
+                    throw new UnknownHostException();
+                    
                 }
             }
             else {
                 System.out.println("The XML file is not valid, the scenario can not be parsed.");
-                return;
+                throw new ValidationException("XML not valid");
             }
         }
         else {
                 System.out.println("Sorry, the XML file does not exist.");
+                throw new FileNotFoundException();
         }
 
     }

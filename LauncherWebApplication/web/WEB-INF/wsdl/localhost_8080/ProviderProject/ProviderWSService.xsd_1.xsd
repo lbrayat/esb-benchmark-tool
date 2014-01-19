@@ -91,7 +91,7 @@
 
 <xs:complexType name="getResults">
 <xs:sequence>
-<xs:element name="isFirst" type="xs:boolean"></xs:element>
+<xs:element name="arg0" type="xs:boolean"></xs:element>
 </xs:sequence>
 </xs:complexType>
 

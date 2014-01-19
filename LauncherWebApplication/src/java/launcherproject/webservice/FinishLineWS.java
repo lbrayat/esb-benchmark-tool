@@ -35,16 +35,7 @@ public class FinishLineWS {
 
     public FinishLineWS() {
         consumerCount = new AtomicInteger(0);
-        PrintWriter writer;
-        try {
-            writer = new PrintWriter(tempFile, "UTF-8");
-            writer.println("");
-            writer.close();
-        } catch (FileNotFoundException ex) {
-                Logger.getLogger(FinishLineWS.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-              Logger.getLogger(FinishLineWS.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
 
 

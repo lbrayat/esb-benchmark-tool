@@ -93,9 +93,20 @@ public class MainCLI {
                 CommandLine cmd;
                 cmd = parser.parse(options, arguments);
                 String inputFilePath = cmd.getOptionValue("i");
-                PrintWriter writer = new PrintWriter(tempFile);
-                writer.print(inputFilePath);
-                writer.close();
+
+
+                Writer writer = null;
+                try {
+                    writer = new BufferedWriter(new OutputStreamWriter(
+                          new FileOutputStream(tempFile), "utf-8"));
+                    writer.write(inputFilePath);
+                    writer.flush();
+                } catch (IOException ex) {
+                  // report
+                } finally {
+                   try {writer.close();} catch (Exception ex) {}
+                }
+
                 System.out.println("wrote input file path to file = "+inputFilePath);
 
 

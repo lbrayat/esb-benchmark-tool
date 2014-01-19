@@ -133,13 +133,19 @@ public class ProviderClient extends ESBWSClient {
      */
     public String callGetResults(boolean isFirst){
 
-        logger.log(Level.INFO, "callGetResults : begin");
+    logger.log(Level.INFO, "callGetResults : begin");
+
 
         providerpckg.ProviderWSService service = new providerpckg.ProviderWSService();
         providerpckg.ProviderWS port = service.getProviderWSPort();
-        
+
+        // TODO process result here
         String results = port.getResults(isFirst);
-        
+        System.out.println("Result = "+results);
+
+
+
+        System.out.println("Result = "+results);
 
         if (!results.isEmpty())
             ResultsSingletonFactory.getInstance().addResults(results);

@@ -48,6 +48,7 @@ public interface ProviderWS {
 
     /**
      * 
+     * @param arg0
      * @return
      *     returns java.lang.String
      */
@@ -55,7 +56,9 @@ public interface ProviderWS {
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "getResults", targetNamespace = "http://providerPckg/", className = "providerpckg.GetResults")
     @ResponseWrapper(localName = "getResultsResponse", targetNamespace = "http://providerPckg/", className = "providerpckg.GetResultsResponse")
-    public String getResults();
+    public String getResults(
+        @WebParam(name = "arg0", targetNamespace = "")
+        boolean arg0);
 
     /**
      * 

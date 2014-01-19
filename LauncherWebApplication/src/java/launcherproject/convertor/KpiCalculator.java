@@ -36,7 +36,7 @@ public class KpiCalculator {
 
         double average=0;
         for (MessageData m : messagesList){
-            average += ((m.ts2-m.ts1) + (m.ts4-m.ts3));
+            average = average + (m.ts2-m.ts1) + (m.ts4-m.ts3);
         }
 
         average = average/messagesList.size();

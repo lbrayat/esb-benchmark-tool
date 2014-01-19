@@ -39,8 +39,6 @@ public class ConsumerWebService {
 
     private ArrayList<Thread> threadsList;
 
-    @WebServiceRef(wsdlLocation = "http://localhost:8080/ProviderProject/ProviderWSService?wsdl")
-    private ProviderWSService service;
 
 
      //logging in different levels
@@ -183,7 +181,7 @@ public class ConsumerWebService {
             baseUrl = providerpckg.ProviderWSService.class.getResource(".");
             url = new URL(baseUrl, this.currentPhase.getRecepientAddress());
         } catch (MalformedURLException e) {
-            log.fatal("Failed to create URL for the wsdl Location: 'http://192.168.1.95:8080/ProviderProject/ProviderWSService?WSDL', retrying as a local file");
+            log.fatal("Failed to create URL for the wsdl Location: 'http://localhost:8080/ProviderProject/ProviderWSService?WSDL', retrying as a local file");
             log.fatal(e.getMessage());
         }
 

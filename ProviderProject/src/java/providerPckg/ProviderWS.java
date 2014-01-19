@@ -122,8 +122,7 @@ public class ProviderWS {
      * Web service operation
      */
     @WebMethod(operationName = "getResults")
-    public String getResults(@WebParam(name = "isFirst")
-    boolean isFirst) {
+    public String getResults(boolean isFirst) {
          if (isFirst)
             return LogResultListSingletonFactory.getInstance().getFirstLog();
         else
